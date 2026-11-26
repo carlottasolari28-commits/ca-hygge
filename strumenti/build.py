@@ -125,7 +125,7 @@ def pagina():
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://static.wixstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Karla:wght@400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/stile.css?v=6">
+<link rel="stylesheet" href="css/stile.css?v=7">
 <script type="application/ld+json">{{"@context":"https://schema.org","@type":"VacationRental","name":"Ca' Hygge","description":"Appartamento vacanze a Lavagna, a pochi passi dal mare.","image":"{url(F['soggiorno'], 1600)}","address":{{"@type":"PostalAddress","addressLocality":"Lavagna","addressRegion":"GE","addressCountry":"IT"}},"email":"{EMAIL}"}}</script>
 </head>
 <body>
@@ -148,6 +148,7 @@ def pagina():
       <span class="mano">benvenuti a casa</span>
       <h1>Ca' Hygge, la vostra casa a Lavagna</h1>
       <p class="lead">Un appartamento luminoso a pochi passi dal mare, dove relax e bellezza si incontrano.</p>
+      <p class="vantaggio">Le tariffe più convenienti le trovate solo prenotando qui, direttamente con noi.</p>
       <div class="azioni"><a class="btn pesca" href="#prenota">Chiedi la disponibilità</a><a class="btn chiaro" href="#stanze">Guarda le stanze</a></div>
     </div>
     <aside class="cartellino" data-tramonto>
@@ -230,6 +231,7 @@ def pagina():
   <div class="wrap">
     <span class="mano" style="color:var(--pesca);font-size:34px">vi aspettiamo!</span>
     <h2>Disponibilità e prenotazioni</h2>
+    <p class="risparmio">Prenotando direttamente da qui trovate sempre le tariffe più convenienti.</p>
     <p>Per sapere se le vostre date sono libere e per prenotare, scriveteci direttamente: vi rispondiamo noi, senza intermediari.</p>
     <form class="richiesta" id="richiesta" novalidate>
       <div><label for="arrivo">Arrivo</label><input type="date" id="arrivo" required></div>
@@ -253,7 +255,7 @@ def pagina():
   </div>
 </footer>
 <script src="js/sole.js"></script>
-<script src="js/casa.js?v=6"></script>
+<script src="js/casa.js?v=7"></script>
 </body>
 </html>
 '''

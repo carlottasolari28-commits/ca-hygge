@@ -194,3 +194,4 @@ p{margin:0 0 1em}
 .hero::before{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(90deg,rgba(22,54,63,.62) 0%,rgba(22,54,63,.32) 45%,rgba(22,54,63,0) 70%)}
 .hero>img{z-index:-1}
 .hero .mano{text-shadow:0 1px 10px rgba(0,0,0,.45)}
+.hero{isolation:isolate}

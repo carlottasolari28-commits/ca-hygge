@@ -126,7 +126,7 @@ def pagina():
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://static.wixstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Karla:wght@400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/stile.css?v=12">
+<link rel="stylesheet" href="css/stile.css?v=13">
 <script type="application/ld+json">{{"@context":"https://schema.org","@type":"VacationRental","name":"Ca' Hygge","description":"Appartamento vacanze a Lavagna, a pochi passi dal mare.","image":"{url(F['soggiorno'], 1600)}","address":{{"@type":"PostalAddress","addressLocality":"Lavagna","addressRegion":"GE","addressCountry":"IT"}},"email":"{EMAIL}"}}</script>
 </head>
 <body>
@@ -283,7 +283,7 @@ def pagina():
   </div>
 </footer>
 <script src="js/sole.js"></script>
-<script src="js/casa.js?v=12"></script>
+<script src="js/casa.js?v=13"></script>
 </body>
 </html>
 '''

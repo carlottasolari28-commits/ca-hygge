@@ -230,3 +230,60 @@ p{margin:0 0 1em}
 .in-bici h3{font-size:clamp(26px,3vw,34px)}
 .in-bici .nota-bici{font-family:var(--mano);font-size:24px;color:var(--corda);margin:0}
 @media(max-width:760px){.in-bici{grid-template-columns:minmax(0,1fr)}}
+
+/* ===== Telefono: versione minimale e ordinata ===== */
+@media(max-width:700px){
+  body{font-size:16px}
+  .band{padding:56px 0}
+  h2{font-size:30px}
+  .occhiello{font-size:22px}
+  .corda{display:none}
+
+  .testata,.testata.piena{background:var(--sabbia);box-shadow:0 1px 0 rgba(31,75,87,.1)}
+  .testata .wrap{min-height:62px}
+  .testata:not(.piena) .logo b{color:var(--blu);text-shadow:none}
+  .logo img{width:38px;height:38px}
+  .logo b{font-size:18px}
+  .menu .btn{min-height:40px;padding:8px 16px;font-size:14px}
+
+  .hero{display:block;min-height:0;color:var(--testo);padding-top:62px;isolation:auto}
+  .hero::before,.hero::after{display:none}
+  .hero>img{position:relative;z-index:auto;inset:auto;height:52vh;min-height:300px;animation:none}
+  .hero .wrap{display:block;padding:30px 20px 40px}
+  .hero .mano{display:none}
+  .hero h1{color:var(--blu);text-shadow:none;font-size:36px;line-height:1.12;margin-bottom:12px}
+  .hero p.lead{font-size:17px;margin-bottom:12px;max-width:none}
+  .vantaggio{color:var(--grigio)!important;text-shadow:none!important;font-size:15px!important;font-weight:500!important;margin:0 0 24px!important}
+  .hero .azioni{flex-direction:column;gap:10px}
+  .hero .azioni .btn{width:100%}
+  .hero .btn.chiaro{color:var(--blu);border-color:rgba(31,75,87,.3)}
+  .hero .btn.chiaro:hover{background:var(--blu);color:#fff}
+  .cartellino{margin-top:28px;max-width:none;transform:none;box-shadow:none;background:#fff;border:1px solid rgba(31,75,87,.1);padding:16px 18px}
+  .cartellino .voto b{font-size:18px;padding:8px 10px}
+  .cartellino .mano{display:none}
+
+  .hygge .foto .nota{display:none}
+  .hygge .foto img{border-radius:20px;aspect-ratio:4/3}
+  .dizionario{margin:14px 0 18px}
+  .piccole-cose li{padding:12px 14px;font-size:15px}
+
+  .tabs{flex-wrap:nowrap;overflow-x:auto;margin:20px -20px 18px;padding:0 20px;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .tabs button{flex:none}
+  .stanza .grande{border-radius:16px}
+  .miniature button{width:72px;height:52px}
+  .posti{gap:18px 28px}
+  .posti b{font-size:32px}
+
+  .passeggiata .intro{margin-bottom:20px}
+  .gite,.citazioni{gap:12px}
+  .in-bici{padding:18px;border-radius:20px}
+  .citazioni figure{padding:22px 20px}
+  .servizi li{padding:14px;font-size:15px}
+  .stampe .quadri img:nth-child(2),.stampe .quadri img:nth-child(3){transform:none}
+
+  .prenota .mano{display:none}
+  .prenota p{font-size:16px}
+  .richiesta{padding:16px;gap:12px;border-radius:18px}
+  .piede .wrap{flex-direction:column;align-items:flex-start;gap:12px}
+}

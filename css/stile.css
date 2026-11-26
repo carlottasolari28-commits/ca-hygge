@@ -223,3 +223,10 @@ p{margin:0 0 1em}
 .richiesta .eta-campi label{font-weight:500;color:var(--grigio)}
 @media(max-width:600px){.richiesta .eta-campi{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .percorso{grid-template-columns:repeat(7,minmax(0,1fr))}@media(max-width:760px){.percorso{grid-template-columns:minmax(0,1fr)}}
+
+/* In bici */
+.in-bici{margin-top:56px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:clamp(24px,4vw,56px);align-items:center;background:#fff;border-radius:28px;padding:clamp(20px,3vw,36px);overflow:hidden}
+.in-bici .bici-disegno{width:100%;height:auto;border-radius:20px;background:var(--sabbia)}
+.in-bici h3{font-size:clamp(26px,3vw,34px)}
+.in-bici .nota-bici{font-family:var(--mano);font-size:24px;color:var(--corda);margin:0}
+@media(max-width:760px){.in-bici{grid-template-columns:minmax(0,1fr)}}

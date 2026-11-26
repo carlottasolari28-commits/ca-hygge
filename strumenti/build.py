@@ -31,6 +31,7 @@ STAMPE = ["96453811213c4c339860fdc627a31bcb.png", "08d2715b3a934c88a73bb23b8b44f
           "fbb45c9a8ed44872a9a31055bca9c958.png", "4211c9fc650b44938e92d3f520bab17c"]
 
 ICONE = {
+    "bici": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5.5" cy="16" r="3.5"/><circle cx="18.5" cy="16" r="3.5"/><path d="M5.5 16 9 9h7l2.5 7M9 9l3.5 7h-7M15 6h2.5l-1.5 3M8 6h3"/></svg>',
     "letto": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18V7M3 14h18v4M21 14v-2a3 3 0 0 0-3-3h-7v5M7 11.5a1.5 1.5 0 1 0 0-.01"/></svg>',
     "divano": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3M2 13a2 2 0 0 1 4 0v2h12v-2a2 2 0 0 1 4 0v4H2zM5 17v2M19 17v2"/></svg>',
     "auto": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 16V11l2-5h10l2 5v5M3 16h18v3H3zM7 13h.01M17 13h.01"/></svg>',
@@ -82,7 +83,7 @@ VOCI = [("Casa curata nei particolari… Fornita di tutto ciò che può servire 
         ("Spaziosa, accogliente e moderna. Ci siamo trovati veramente bene.", )]
 
 SERVIZI = [("auto", "Parcheggio gratuito"), ("wifi", "WiFi gratuito"), ("zampa", "Animali ammessi"), ("balcone", "Balcone"),
-           ("lenzuola", "Lenzuola e asciugamani"), ("caffe", "Macchina da caffè"), ("giochi", "Giochi da tavolo"), ("treno", "Stazione a 15 minuti")]
+           ("lenzuola", "Lenzuola e asciugamani"), ("caffe", "Macchina da caffè"), ("giochi", "Giochi da tavolo"), ("treno", "Stazione a 15 minuti"), ("bici", "Noleggio bici per adulti")]
 
 
 def stanza_html(i, s):
@@ -125,7 +126,7 @@ def pagina():
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://static.wixstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Karla:wght@400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/stile.css?v=11">
+<link rel="stylesheet" href="css/stile.css?v=12">
 <script type="application/ld+json">{{"@context":"https://schema.org","@type":"VacationRental","name":"Ca' Hygge","description":"Appartamento vacanze a Lavagna, a pochi passi dal mare.","image":"{url(F['soggiorno'], 1600)}","address":{{"@type":"PostalAddress","addressLocality":"Lavagna","addressRegion":"GE","addressCountry":"IT"}},"email":"{EMAIL}"}}</script>
 </head>
 <body>
@@ -197,6 +198,32 @@ def pagina():
       <p style="max-width:42ch;margin:0">A pochi passi dal mare e a 10 minuti a piedi sia dal centro di Lavagna sia da quello di Chiavari. Qui la macchina potete lasciarla al parcheggio gratuito.</p>
     </div>
     <div class="percorso appare">{tappe}</div>
+    <div class="in-bici appare">
+      <svg class="bici-disegno" viewBox="0 0 420 300" role="img" aria-label="Illustrazione di una bicicletta con il cestino, davanti al mare e al sole">
+        <circle cx="318" cy="92" r="46" fill="#f0b08c" opacity=".9"/>
+        <path d="M0 170c40-14 80-14 120 0s80 14 120 0 80-14 120 0 40 10 60 4v126H0z" fill="#8cc3c8"/>
+        <path d="M0 196c40-12 80-12 120 0s80 12 120 0 80-12 120 0 40 8 60 4v100H0z" fill="#d7ecee"/>
+        <path d="M0 228h420v72H0z" fill="#ede2d1"/>
+        <path d="M44 58q14-10 28 0M70 44q10-8 20 0" fill="none" stroke="#1f4b57" stroke-width="3" stroke-linecap="round"/>
+        <g fill="none" stroke="#1f4b57" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="128" cy="226" r="46"/><circle cx="296" cy="226" r="46"/>
+          <path d="M128 226l46-82h82l40 82M174 144l42 82h-88M216 226l40-82"/>
+          <path d="M160 128h34M248 112l8 32M240 112h24"/>
+        </g>
+        <g stroke="#c79c74" stroke-width="2" opacity=".8"><path d="M128 180v92M82 226h92M296 180v92M250 226h92"/></g>
+        <circle cx="128" cy="226" r="6" fill="#1f4b57"/><circle cx="296" cy="226" r="6" fill="#1f4b57"/><circle cx="216" cy="226" r="9" fill="#c79c74"/>
+        <path d="M262 110h56l-8 34h-40z" fill="#c79c74"/>
+        <path d="M268 118h44M266 128h44" stroke="#f6efe4" stroke-width="3"/>
+        <path d="M276 108c-4-14 4-24 14-22 0 10-6 18-14 22zM292 106c2-14 14-20 22-14-4 8-12 14-22 14z" fill="#74a57f"/>
+        <circle cx="300" cy="98" r="6" fill="#f0b08c"/>
+      </svg>
+      <div>
+        <span class="occhiello">pedalando verso il mare</span>
+        <h3>Noleggio biciclette per adulti</h3>
+        <p>Da Ca' Hygge potete muovervi anche in bicicletta: è disponibile il noleggio di bici per adulti, perfetto per arrivare al mare, fare un giro sul lungomare o raggiungere Chiavari senza pensieri di parcheggio.</p>
+        <p class="nota-bici">Chiedetecele quando ci scrivete per la disponibilità.</p>
+      </div>
+    </div>
     <div class="gite">{gite}</div>
   </div>
 </section>
@@ -256,7 +283,7 @@ def pagina():
   </div>
 </footer>
 <script src="js/sole.js"></script>
-<script src="js/casa.js?v=11"></script>
+<script src="js/casa.js?v=12"></script>
 </body>
 </html>
 '''

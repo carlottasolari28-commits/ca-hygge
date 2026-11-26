@@ -489,8 +489,6 @@ def pagina(lang):
     voci = "".join(f'<figure class="appare"><blockquote>{html.escape(v)}</blockquote><figcaption>{t["voce_cap"]}</figcaption></figure>' for v in t["voci"])
     servizi = "".join(f'<li>{ICONE[i]}<span>{tx}</span></li>' for i, tx in zip(ICONE_SERVIZI, t["servizi"]))
     piccole = "".join(f'<li>{ICONE[i]}<span>{tx}</span></li>' for i, tx in zip(ICONE_PICCOLE, t["piccole"]))
-    stampe = "".join(img(s, t["stampe_alt"], "(max-width:820px) 45vw, 20vw") for s in STAMPE)
-    mail_stampe = f"mailto:{EMAIL}?subject=" + t["stampe_oggetto"].replace(" ", "%20")
     lingue = "".join(
         f'<li><a href="{su}{percorso(l)}" hreflang="{l}" lang="{l}" data-lingua="{l}"{" aria-current=\"true\"" if l == lang else ""}>{NOMI_LINGUA[l]}</a></li>' for l in LINGUE)
     alternati = "".join(f'<link rel="alternate" hreflang="{l}" href="{DOMINIO}/{percorso(l)}">\n' for l in LINGUE) + \
@@ -608,19 +606,6 @@ def pagina(lang):
     <div class="citazioni">{voci}</div>
     <h3 style="margin-top:64px">{t["h3_servizi"]}</h3>
     <ul class="servizi">{servizi}</ul>
-  </div>
-</section>
-
-<section class="band">
-  <div class="wrap stampe">
-    <div class="appare">
-      <span class="occhiello">{t["occh_stampe"]}</span>
-      <h2>Visioni di Riviera</h2>
-      <p>{t["stampe_p"]}</p>
-      <p><a class="btn chiaro" href="{mail_stampe}">{t["stampe_btn"]}</a></p>
-      <p style="font-size:14px;color:var(--grigio)">{t["scrivete_a"]} {EMAIL}</p>
-    </div>
-    <div class="quadri appare">{stampe}</div>
   </div>
 </section>
 

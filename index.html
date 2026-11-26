@@ -15,8 +15,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://static.wixstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Karla:wght@400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/stile.css?v=5">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"VacationRental","name":"Ca' Hygge","description":"Appartamento vacanze a Lavagna, a pochi passi dal mare.","image":"https://static.wixstatic.com/media/edddbc_9b73cc7bd9f04071ac35682df0bffee0~mv2.jpg/v1/fit/w_1600,h_1600,q_85/cahygge.jpg","address":{"@type":"PostalAddress","addressLocality":"Lavagna","addressRegion":"GE","addressCountry":"IT"},"email":"cahygge@gmail.com","sameAs":["https://www.booking.com/hotel/it/ca-hygge.it.html"]}</script>
+<link rel="stylesheet" href="css/stile.css?v=6">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"VacationRental","name":"Ca' Hygge","description":"Appartamento vacanze a Lavagna, a pochi passi dal mare.","image":"https://static.wixstatic.com/media/edddbc_9b73cc7bd9f04071ac35682df0bffee0~mv2.jpg/v1/fit/w_1600,h_1600,q_85/cahygge.jpg","address":{"@type":"PostalAddress","addressLocality":"Lavagna","addressRegion":"GE","addressCountry":"IT"},"email":"cahygge@gmail.com"}</script>
 </head>
 <body>
 <a class="salta" href="#casa">Vai al contenuto</a>
@@ -25,7 +25,7 @@
     <a class="logo" href="#"><img src="https://static.wixstatic.com/media/edddbc_dc55cf7d66d94ac6b43c7e1e61e67f1d~mv2.png/v1/fit/w_128,h_128,q_85/cahygge.png" alt="" width="52" height="52"><b>CA' HYGGE</b></a>
     <nav aria-label="Menu"><ul class="menu">
       <li><a href="#casa">La casa</a></li><li><a href="#stanze">Le stanze</a></li><li><a href="#dintorni">Dintorni</a></li><li><a href="#ospiti">Ospiti</a></li>
-      <li><a class="btn pesca" href="https://www.booking.com/hotel/it/ca-hygge.it.html" rel="noopener">Prenota</a></li>
+      <li><a class="btn pesca" href="#prenota">Prenota</a></li>
     </ul></nav>
   </div>
 </header>
@@ -38,7 +38,7 @@
       <span class="mano">benvenuti a casa</span>
       <h1>Ca' Hygge, la vostra casa a Lavagna</h1>
       <p class="lead">Un appartamento luminoso a pochi passi dal mare, dove relax e bellezza si incontrano.</p>
-      <div class="azioni"><a class="btn pesca" href="https://www.booking.com/hotel/it/ca-hygge.it.html" rel="noopener">Verifica la disponibilità</a><a class="btn chiaro" href="#stanze">Guarda le stanze</a></div>
+      <div class="azioni"><a class="btn pesca" href="#prenota">Chiedi la disponibilità</a><a class="btn chiaro" href="#stanze">Guarda le stanze</a></div>
     </div>
     <aside class="cartellino" data-tramonto>
       <div class="voto"><b>9,5</b><span>Eccezionale<small>su Booking.com · 55 recensioni</small></span></div>
@@ -139,13 +139,22 @@
   </div>
 </section>
 
-<section class="band prenota">
+<section class="band prenota" id="prenota">
   <img src="https://static.wixstatic.com/media/edddbc_1793146089aa4642b812ef6236527ca8~mv2.jpg/v1/fit/w_1600,h_1600,q_85/cahygge.jpg" srcset="https://static.wixstatic.com/media/edddbc_1793146089aa4642b812ef6236527ca8~mv2.jpg/v1/fit/w_640,h_640,q_85/cahygge.jpg 640w, https://static.wixstatic.com/media/edddbc_1793146089aa4642b812ef6236527ca8~mv2.jpg/v1/fit/w_1000,h_1000,q_85/cahygge.jpg 1000w, https://static.wixstatic.com/media/edddbc_1793146089aa4642b812ef6236527ca8~mv2.jpg/v1/fit/w_1600,h_1600,q_85/cahygge.jpg 1600w, https://static.wixstatic.com/media/edddbc_1793146089aa4642b812ef6236527ca8~mv2.jpg/v1/fit/w_2400,h_2400,q_85/cahygge.jpg 2400w" sizes="100vw" alt="" loading="lazy" decoding="async">
   <div class="wrap">
     <span class="mano" style="color:var(--pesca);font-size:34px">vi aspettiamo!</span>
-    <h2>Il mare è qui, la casa pure</h2>
-    <p>Controllate le date libere e prenotate su Booking.com. Per qualsiasi domanda, scriveteci: rispondiamo volentieri.</p>
-    <div class="azioni"><a class="btn pesca" href="https://www.booking.com/hotel/it/ca-hygge.it.html" rel="noopener">Verifica la disponibilità</a><a class="btn chiaro" href="mailto:cahygge@gmail.com">Scrivici</a></div>
+    <h2>Disponibilità e prenotazioni</h2>
+    <p>Per sapere se le vostre date sono libere e per prenotare, scriveteci direttamente: vi rispondiamo noi, senza intermediari.</p>
+    <form class="richiesta" id="richiesta" novalidate>
+      <div><label for="arrivo">Arrivo</label><input type="date" id="arrivo" required></div>
+      <div><label for="partenza">Partenza</label><input type="date" id="partenza" required></div>
+      <div><label for="adulti">Adulti</label><select id="adulti"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option></select></div>
+      <div><label for="bambini">Bambini</label><select id="bambini"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+      <div class="pieno"><label class="spunta"><input type="checkbox" id="cane"> Viaggiamo con un animale</label></div>
+      <div class="pieno"><button class="btn pesca" type="submit">Scrivici per la disponibilità</button>
+      <p class="avviso" aria-live="polite"></p></div>
+    </form>
+    <p class="o-scrivi">Oppure scriveteci a <a href="mailto:cahygge@gmail.com">cahygge@gmail.com</a></p>
   </div>
 </section>
 </main>
@@ -154,10 +163,10 @@
   <div class="wrap">
     <a class="logo" href="#"><img src="https://static.wixstatic.com/media/edddbc_dc55cf7d66d94ac6b43c7e1e61e67f1d~mv2.png/v1/fit/w_128,h_128,q_85/cahygge.png" alt="" width="52" height="52"><b>CA' HYGGE</b></a>
     <span>Appartamento vacanze a Lavagna (GE)</span>
-    <span><a href="mailto:cahygge@gmail.com">cahygge@gmail.com</a> · <a href="https://www.booking.com/hotel/it/ca-hygge.it.html" rel="noopener">Booking.com</a></span>
+    <span><a href="mailto:cahygge@gmail.com">cahygge@gmail.com</a></span>
   </div>
 </footer>
 <script src="js/sole.js"></script>
-<script src="js/casa.js?v=5"></script>
+<script src="js/casa.js?v=6"></script>
 </body>
 </html>

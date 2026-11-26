@@ -51,3 +51,28 @@
     box.textContent = Sole.ora(Sole.orari(Sole.mezzogiorno(oggi), 44.3076, 9.3443).tramonto);
   }
 }
+
+// Richiesta di disponibilità: prepara un'email già compilata
+{
+  const f = document.getElementById('richiesta');
+  if (f) {
+    const arrivo = f.querySelector('#arrivo'), partenza = f.querySelector('#partenza'), avviso = f.querySelector('.avviso');
+    const oggi = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Rome' }).format(new Date());
+    arrivo.min = oggi; partenza.min = oggi;
+    arrivo.addEventListener('change', () => { partenza.min = arrivo.value || oggi; });
+    const it = v => v.split('-').reverse().join('/');
+    f.addEventListener('submit', ev => {
+      ev.preventDefault();
+      if (!arrivo.value || !partenza.value) { avviso.textContent = 'Indicate le date di arrivo e di partenza.'; return; }
+      if (partenza.value <= arrivo.value) { avviso.textContent = 'La partenza deve essere dopo l’arrivo.'; return; }
+      const notti = Math.round((new Date(partenza.value) - new Date(arrivo.value)) / 864e5);
+      const corpo = 'Ciao! Vorremmo sapere se Ca’ Hygge è disponibile:\n\n' +
+        'Arrivo: ' + it(arrivo.value) + '\nPartenza: ' + it(partenza.value) + ' (' + notti + (notti === 1 ? ' notte' : ' notti') + ')\n' +
+        'Adulti: ' + f.querySelector('#adulti').value + '\nBambini: ' + f.querySelector('#bambini').value + '\n' +
+        (f.querySelector('#cane').checked ? 'Viaggiamo con un animale.\n' : '') + '\nGrazie!';
+      const oggetto = 'Disponibilità Ca’ Hygge dal ' + it(arrivo.value) + ' al ' + it(partenza.value);
+      location.href = 'mailto:cahygge@gmail.com?subject=' + encodeURIComponent(oggetto) + '&body=' + encodeURIComponent(corpo);
+      avviso.textContent = 'Si apre la vostra app di posta con il messaggio già pronto: basta premere invia.';
+    });
+  }
+}

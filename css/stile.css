@@ -197,3 +197,17 @@ p{margin:0 0 1em}
 .hero{isolation:isolate}
 .hero .mano{color:#fff}
 .hero .cartellino .mano{color:var(--corda);text-shadow:none}
+
+/* Richiesta di disponibilità */
+.richiesta{max-width:640px;margin:0 auto 18px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;text-align:left;background:rgba(246,239,228,.96);color:var(--testo);padding:22px;border-radius:22px}
+.richiesta .pieno{grid-column:1/-1;text-align:center}
+.richiesta label{display:block;font-size:14px;font-weight:600;color:var(--blu);margin-bottom:6px}
+.richiesta input[type=date],.richiesta select{width:100%;min-height:48px;border:1px solid rgba(31,75,87,.25);border-radius:12px;padding:8px 10px;font:500 16px/1.2 var(--corpo);color:var(--testo);background:#fff}
+.richiesta .spunta{display:inline-flex;align-items:center;gap:10px;font-weight:500;color:var(--testo);margin:0}
+.richiesta .spunta input{width:20px;height:20px;accent-color:var(--blu)}
+.richiesta .btn{width:100%}
+.richiesta .avviso{margin:10px 0 0;font-size:15px;color:var(--blu)}
+.richiesta .avviso:empty{display:none}
+.o-scrivi{font-size:16px!important}
+.o-scrivi a{color:#fff}
+@media(max-width:600px){.richiesta{grid-template-columns:repeat(2,minmax(0,1fr))}}

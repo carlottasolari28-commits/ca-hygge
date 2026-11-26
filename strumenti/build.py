@@ -2,7 +2,6 @@
 import html, os
 
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
-BOOKING = "https://www.booking.com/hotel/it/ca-hygge.it.html"
 EMAIL = "cahygge@gmail.com"
 
 # Per ora le foto arrivano dallo spazio Wix: quando avremo gli originali basterà cambiare url().
@@ -126,8 +125,8 @@ def pagina():
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://static.wixstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Karla:wght@400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/stile.css?v=5">
-<script type="application/ld+json">{{"@context":"https://schema.org","@type":"VacationRental","name":"Ca' Hygge","description":"Appartamento vacanze a Lavagna, a pochi passi dal mare.","image":"{url(F['soggiorno'], 1600)}","address":{{"@type":"PostalAddress","addressLocality":"Lavagna","addressRegion":"GE","addressCountry":"IT"}},"email":"{EMAIL}","sameAs":["{BOOKING}"]}}</script>
+<link rel="stylesheet" href="css/stile.css?v=6">
+<script type="application/ld+json">{{"@context":"https://schema.org","@type":"VacationRental","name":"Ca' Hygge","description":"Appartamento vacanze a Lavagna, a pochi passi dal mare.","image":"{url(F['soggiorno'], 1600)}","address":{{"@type":"PostalAddress","addressLocality":"Lavagna","addressRegion":"GE","addressCountry":"IT"}},"email":"{EMAIL}"}}</script>
 </head>
 <body>
 <a class="salta" href="#casa">Vai al contenuto</a>
@@ -136,7 +135,7 @@ def pagina():
     <a class="logo" href="#"><img src="{url(LOGO, 128)}" alt="" width="52" height="52"><b>CA' HYGGE</b></a>
     <nav aria-label="Menu"><ul class="menu">
       <li><a href="#casa">La casa</a></li><li><a href="#stanze">Le stanze</a></li><li><a href="#dintorni">Dintorni</a></li><li><a href="#ospiti">Ospiti</a></li>
-      <li><a class="btn pesca" href="{BOOKING}" rel="noopener">Prenota</a></li>
+      <li><a class="btn pesca" href="#prenota">Prenota</a></li>
     </ul></nav>
   </div>
 </header>
@@ -149,7 +148,7 @@ def pagina():
       <span class="mano">benvenuti a casa</span>
       <h1>Ca' Hygge, la vostra casa a Lavagna</h1>
       <p class="lead">Un appartamento luminoso a pochi passi dal mare, dove relax e bellezza si incontrano.</p>
-      <div class="azioni"><a class="btn pesca" href="{BOOKING}" rel="noopener">Verifica la disponibilità</a><a class="btn chiaro" href="#stanze">Guarda le stanze</a></div>
+      <div class="azioni"><a class="btn pesca" href="#prenota">Chiedi la disponibilità</a><a class="btn chiaro" href="#stanze">Guarda le stanze</a></div>
     </div>
     <aside class="cartellino" data-tramonto>
       <div class="voto"><b>9,5</b><span>Eccezionale<small>su Booking.com · 55 recensioni</small></span></div>
@@ -226,13 +225,22 @@ def pagina():
   </div>
 </section>
 
-<section class="band prenota">
+<section class="band prenota" id="prenota">
   {img(F['mansarda'], "", "100vw")}
   <div class="wrap">
     <span class="mano" style="color:var(--pesca);font-size:34px">vi aspettiamo!</span>
-    <h2>Il mare è qui, la casa pure</h2>
-    <p>Controllate le date libere e prenotate su Booking.com. Per qualsiasi domanda, scriveteci: rispondiamo volentieri.</p>
-    <div class="azioni"><a class="btn pesca" href="{BOOKING}" rel="noopener">Verifica la disponibilità</a><a class="btn chiaro" href="mailto:{EMAIL}">Scrivici</a></div>
+    <h2>Disponibilità e prenotazioni</h2>
+    <p>Per sapere se le vostre date sono libere e per prenotare, scriveteci direttamente: vi rispondiamo noi, senza intermediari.</p>
+    <form class="richiesta" id="richiesta" novalidate>
+      <div><label for="arrivo">Arrivo</label><input type="date" id="arrivo" required></div>
+      <div><label for="partenza">Partenza</label><input type="date" id="partenza" required></div>
+      <div><label for="adulti">Adulti</label><select id="adulti">{''.join(f'<option{" selected" if n == 2 else ""}>{n}</option>' for n in range(1, 8))}</select></div>
+      <div><label for="bambini">Bambini</label><select id="bambini">{''.join(f'<option>{n}</option>' for n in range(0, 6))}</select></div>
+      <div class="pieno"><label class="spunta"><input type="checkbox" id="cane"> Viaggiamo con un animale</label></div>
+      <div class="pieno"><button class="btn pesca" type="submit">Scrivici per la disponibilità</button>
+      <p class="avviso" aria-live="polite"></p></div>
+    </form>
+    <p class="o-scrivi">Oppure scriveteci a <a href="mailto:{EMAIL}">{EMAIL}</a></p>
   </div>
 </section>
 </main>
@@ -241,11 +249,11 @@ def pagina():
   <div class="wrap">
     <a class="logo" href="#"><img src="{url(LOGO, 128)}" alt="" width="52" height="52"><b>CA' HYGGE</b></a>
     <span>Appartamento vacanze a Lavagna (GE)</span>
-    <span><a href="mailto:{EMAIL}">{EMAIL}</a> · <a href="{BOOKING}" rel="noopener">Booking.com</a></span>
+    <span><a href="mailto:{EMAIL}">{EMAIL}</a></span>
   </div>
 </footer>
 <script src="js/sole.js"></script>
-<script src="js/casa.js?v=5"></script>
+<script src="js/casa.js?v=6"></script>
 </body>
 </html>
 '''

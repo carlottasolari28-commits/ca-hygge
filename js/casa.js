@@ -52,40 +52,51 @@
   }
 }
 
-// Richiesta di disponibilità: prepara un'email già compilata
+// Richiesta di disponibilità: prepara un'email già compilata, nella lingua della pagina
 {
   const f = document.getElementById('richiesta');
-  if (f) {
+  const T = window.CA_T;
+  if (f && T) {
     const arrivo = f.querySelector('#arrivo'), partenza = f.querySelector('#partenza'), avviso = f.querySelector('.avviso');
     const oggi = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Rome' }).format(new Date());
     arrivo.min = oggi; partenza.min = oggi;
     arrivo.addEventListener('change', () => { partenza.min = arrivo.value || oggi; });
-    const it = v => v.split('-').reverse().join('/');
+    const data = v => v.split('-').reverse().join('/');
     const selB = f.querySelector('#bambini'), boxEta = f.querySelector('#eta'), campi = f.querySelector('.eta-campi');
-    const opzioni = '<option value="">Scegli</option><option value="meno di 1 anno">meno di 1 anno</option>' +
-      Array.from({ length: 17 }, (_, i) => '<option value="' + (i + 1) + (i ? ' anni' : ' anno') + '">' + (i + 1) + (i ? ' anni' : ' anno') + '</option>').join('');
+    const opzioni = '<option value="">' + T.scegli + '</option><option>' + T.meno1 + '</option>' +
+      Array.from({ length: 17 }, (_, i) => '<option>' + (i + 1) + ' ' + (i ? T.anni : T.anno) + '</option>').join('');
     const aggiornaEta = () => {
       const n = Number(selB.value), vecchi = [...campi.querySelectorAll('select')].map(x => x.value);
       campi.innerHTML = Array.from({ length: n }, (_, i) =>
-        '<div><label for="eta-' + i + '">Bambino ' + (i + 1) + '</label><select id="eta-' + i + '">' + opzioni + '</select></div>').join('');
+        '<div><label for="eta-' + i + '">' + T.bambino + ' ' + (i + 1) + '</label><select id="eta-' + i + '">' + opzioni + '</select></div>').join('');
       campi.querySelectorAll('select').forEach((x, i) => { if (vecchi[i]) x.value = vecchi[i]; });
       boxEta.hidden = n === 0;
     };
     selB.addEventListener('change', aggiornaEta);
     f.addEventListener('submit', ev => {
       ev.preventDefault();
-      if (!arrivo.value || !partenza.value) { avviso.textContent = 'Indicate le date di arrivo e di partenza.'; return; }
-      if (partenza.value <= arrivo.value) { avviso.textContent = 'La partenza deve essere dopo l’arrivo.'; return; }
+      if (!arrivo.value || !partenza.value) { avviso.textContent = T.errDate; return; }
+      if (partenza.value <= arrivo.value) { avviso.textContent = T.errOrdine; return; }
       const eta = [...campi.querySelectorAll('select')].map(x => x.value);
-      if (eta.some(v => !v)) { avviso.textContent = 'Indicate l\u2019età di ogni bambino.'; return; }
+      if (eta.some(v => !v)) { avviso.textContent = T.errEta; return; }
       const notti = Math.round((new Date(partenza.value) - new Date(arrivo.value)) / 864e5);
-      const corpo = 'Ciao! Vorremmo sapere se Ca’ Hygge è disponibile:\n\n' +
-        'Arrivo: ' + it(arrivo.value) + '\nPartenza: ' + it(partenza.value) + ' (' + notti + (notti === 1 ? ' notte' : ' notti') + ')\n' +
-        'Adulti: ' + f.querySelector('#adulti').value + '\nBambini: ' + selB.value + (eta.length ? ' (età: ' + eta.join(', ') + ')' : '') + '\n' +
-        (f.querySelector('#cane').checked ? 'Viaggiamo con un animale.\n' : '') + '\nGrazie!';
-      const oggetto = 'Disponibilità Ca’ Hygge dal ' + it(arrivo.value) + ' al ' + it(partenza.value);
+      const corpo = T.mIntro + '\n\n' +
+        T.arrivo + ': ' + data(arrivo.value) + '\n' + T.partenza + ': ' + data(partenza.value) + ' (' + notti + ' ' + (notti === 1 ? T.notte : T.notti) + ')\n' +
+        T.adulti + ': ' + f.querySelector('#adulti').value + '\n' + T.bambini + ': ' + selB.value + (eta.length ? ' (' + T.etaBreve + ': ' + eta.join(', ') + ')' : '') + '\n' +
+        (f.querySelector('#cane').checked ? T.mAnimale + '\n' : '') + '\n' + T.mGrazie;
+      const oggetto = T.mOggetto + ' ' + data(arrivo.value) + ' – ' + data(partenza.value);
       location.href = 'mailto:cahygge@gmail.com?subject=' + encodeURIComponent(oggetto) + '&body=' + encodeURIComponent(corpo);
-      avviso.textContent = 'Si apre la vostra app di posta con il messaggio già pronto: basta premere invia.';
+      avviso.textContent = T.ok;
     });
   }
 }
+
+// Menu delle lingue: ricorda la scelta
+document.querySelectorAll('[data-lingua]').forEach(a => a.addEventListener('click', () => {
+  try { localStorage.setItem('ca-lingua', a.dataset.lingua); } catch (e) { /* niente */ }
+}));
+
+// Chiude il menu lingue cliccando altrove
+document.addEventListener('click', ev => {
+  document.querySelectorAll('.lingue details[open]').forEach(d => { if (!d.contains(ev.target)) d.open = false; });
+});

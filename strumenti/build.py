@@ -31,6 +31,10 @@ STAMPE = ["96453811213c4c339860fdc627a31bcb.png", "08d2715b3a934c88a73bb23b8b44f
           "fbb45c9a8ed44872a9a31055bca9c958.png", "4211c9fc650b44938e92d3f520bab17c"]
 
 ICONE = {
+    "lavatrice": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M4 7h16M7 5h.01M10 5h.01"/><circle cx="12" cy="14" r="4"/></svg>',
+    "bollitore": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 8h9l1 12H6zM16 10h2a2 2 0 0 1 0 4h-1.5M9 8V6a3 3 0 0 1 6 0v2M5 20h14"/></svg>',
+    "microonde": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="13" rx="2"/><rect x="6" y="8" width="9" height="7" rx="1"/><path d="M18 9h.01M18 12h.01M18 15h.01"/></svg>',
+    "tv": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8M12 17v4M10 9l4 2-4 2z"/></svg>',
     "bici": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5.5" cy="16" r="3.5"/><circle cx="18.5" cy="16" r="3.5"/><path d="M5.5 16 9 9h7l2.5 7M9 9l3.5 7h-7M15 6h2.5l-1.5 3M8 6h3"/></svg>',
     "letto": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18V7M3 14h18v4M21 14v-2a3 3 0 0 0-3-3h-7v5M7 11.5a1.5 1.5 0 1 0 0-.01"/></svg>',
     "divano": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3M2 13a2 2 0 0 1 4 0v2h12v-2a2 2 0 0 1 4 0v4H2zM5 17v2M19 17v2"/></svg>',
@@ -48,158 +52,395 @@ ICONE = {
     "saponi": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6M10 3v3M14 3v3M8 6h8v14a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1z"/></svg>',
 }
 
-STANZE = [
-    ("soggiorno", "Soggiorno", "Il cuore della casa: luminoso, con il parquet caldo, il divano e la scala bianca che sale verso la mansarda. Qui la sera si gioca, si chiacchiera e si programma la gita del giorno dopo.",
-     [("soggiorno", "Il soggiorno luminoso con la scala verso la mansarda"), ("soggiorno_b", "Il soggiorno con il divano e la porta finestra"), ("soggiorno_v", "Il soggiorno visto dall'ingresso")],
-     [("divano", "Divano letto")]),
-    ("cucina", "Cucina e pranzo", "Una cucina bianca e attrezzata, con macchina da caffè, e un tavolo tondo dove fare colazione con calma prima di scendere al mare.",
-     [("cucina", "La cucina attrezzata con le piante sulla mensola"), ("pranzo_c", "Il tavolo tondo vicino alla cucina"), ("pranzo_v", "La zona pranzo con il tavolo bianco"), ("pranzo_b", "Il tavolo da pranzo con l'orchidea")],
-     []),
-    ("matrimoniale", "Camera matrimoniale", "Ampia e silenziosa, con due finestre che la riempiono di luce. Oltre al letto matrimoniale c'è un comodo divano letto.",
-     [("camera_c", "La camera matrimoniale con il letto in ferro battuto"), ("camera_b", "La camera matrimoniale con il divano letto"), ("camera_a", "La camera matrimoniale vista dalla porta")],
-     [("letto", "Letto matrimoniale"), ("divano", "Divano letto")]),
-    ("mansarda", "Mansarda", "Il rifugio sotto il tetto in legno, con il lucernario: la stanza preferita da chi ama dormire un po' di più.",
-     [("mansarda", "La mansarda con il soffitto in legno e il lucernario"), ("mansarda_v", "Il letto della mansarda")],
-     [("letto", "Letto matrimoniale alla francese")]),
-    ("cameretta", "Cameretta", "Piccola e raccolta, con le stampe in bianco e nero alle pareti: perfetta per un bambino o per chi viaggia da solo.",
-     [("singola", "La cameretta con il letto singolo")],
-     [("letto", "Letto singolo")]),
-    ("bagno", "Bagno", "Con doccia e bidet. Asciugamani, lenzuola e un set di cortesia vi aspettano già.",
-     [("bagno", "Il bagno con la doccia"), ("cortesia", "Il set di cortesia in bagno")],
-     [("saponi", "Set di cortesia"), ("lenzuola", "Asciugamani e lenzuola")]),
+
+LINGUE = ["it", "en", "de", "fr", "es"]
+NOMI_LINGUA = {"it": "Italiano", "en": "English", "de": "Deutsch", "fr": "Français", "es": "Español"}
+
+# Chiavi delle foto delle stanze, uguali per tutte le lingue
+FOTO_STANZE = [
+    ("soggiorno", ["soggiorno", "soggiorno_b", "soggiorno_v"], ["divano"]),
+    ("cucina", ["cucina", "pranzo_c", "pranzo_v", "pranzo_b"], []),
+    ("matrimoniale", ["camera_c", "camera_b", "camera_a"], ["letto", "divano"]),
+    ("mansarda", ["mansarda", "mansarda_v"], ["letto"]),
+    ("cameretta", ["singola"], ["letto"]),
+    ("bagno", ["bagno", "cortesia"], ["saponi", "lenzuola"]),
 ]
+ICONE_SERVIZI = ["auto", "wifi", "tv", "lavatrice", "microonde", "bollitore", "caffe", "zampa", "balcone",
+                 "lenzuola", "giochi", "bici", "treno"]
+ICONE_PICCOLE = ["foglio", "pianta", "giochi", "zampa"]
 
-TAPPE = [("Ca' Hygge", "0'", "si parte da qui"), ("Fermata bus", "1'", "proprio sotto casa"),
-         ("Supermercato", "3'", "per la spesa"), ("Centro di Lavagna", "10'", ""),
-         ("Centro di Chiavari", "10'", ""), ("Mare", "15'", ""), ("Stazione", "15'", "")]
+T = {}
 
-GITE = [("Sestri Levante", "La Baia del Silenzio e la Baia delle Favole, a pochi minuti."),
-        ("Cinque Terre", "Monterosso, Vernazza, Manarola: tutte in treno, senza pensieri di parcheggio."),
-        ("Camogli", "Le case colorate affacciate sul porticciolo."),
-        ("Portofino", "In treno fino a Santa Margherita, poi bus o battello.")]
+T["it"] = dict(
+    locale="it_IT",
+    title="Ca' Hygge · Appartamento vacanze a Lavagna, vicino al mare",
+    desc="Ca' Hygge è un appartamento luminoso a Lavagna, a 10 minuti a piedi dai centri di Lavagna e Chiavari. Tre camere, WiFi, Netflix e Prime Video, lavatrice, animali ammessi.",
+    og_desc="Un appartamento luminoso a pochi passi dal mare, dove relax e bellezza si incontrano.",
+    salta="Vai al contenuto", menu="Menu", lingua="Lingua",
+    nav=["La casa", "Le stanze", "Dintorni", "Ospiti", "Prenota"],
+    hero_alt="Il soggiorno luminoso di Ca' Hygge con il parquet e la scala bianca",
+    benvenuti="benvenuti a casa",
+    h1="Ca' Hygge, la vostra casa a Lavagna",
+    lead="Un appartamento luminoso a pochi passi dal mare, dove relax e bellezza si incontrano.",
+    vantaggio="Le tariffe più convenienti le trovate solo prenotando qui, direttamente con noi.",
+    cta_disp="Chiedi la disponibilità", cta_stanze="Guarda le stanze",
+    voto="9,5", eccezionale="Eccezionale", su_booking="su Booking.com · 55 recensioni",
+    tramonto="Stasera a Lavagna il sole tramonta alle", tramonto_nota="giusto il tempo di arrivare in spiaggia",
+    casa_alt="Il tavolo tondo con le sedie bianche vicino alla cucina", nota_caffe="il caffè è già pronto",
+    occh_hygge="perché “hygge”?", h2_casa="Una casa al mare che sa di casa", parola_danese="parola danese",
+    diz="la sensazione di calore e benessere che si prova nelle cose semplici: una coperta, una luce morbida, il tempo passato insieme.",
+    casa_p="Abbiamo voluto che Ca' Hygge fosse questo: un posto dove appoggiare le valigie e sentirsi subito a proprio agio. Tre camere, un soggiorno luminoso, una cucina dove cucinare davvero, e il mare a pochi passi.",
+    piccole=["Indicazioni e consigli lasciati anche per iscritto", "Piante, luce naturale e parquet caldo", "Giochi da tavolo per le serate in casa", "Anche il vostro cane è il benvenuto"],
+    occh_stanze="fate un giro", h2_stanze="Le stanze", tabs_label="Stanze della casa", mostra="Mostra",
+    stanze=[
+        ("Soggiorno", "Il cuore della casa: luminoso, con il parquet caldo, il divano e la scala bianca che sale verso la mansarda. La sera, Netflix e Prime Video sulla TV, un gioco da tavolo o il programma della gita del giorno dopo.",
+         ["Il soggiorno luminoso con la scala verso la mansarda", "Il soggiorno con il divano e la porta finestra", "Il soggiorno visto dall'ingresso"], ["Divano letto"]),
+        ("Cucina e pranzo", "Una cucina bianca e attrezzata, con macchina da caffè, bollitore e microonde, e un tavolo tondo dove fare colazione con calma prima di scendere al mare.",
+         ["La cucina attrezzata con le piante sulla mensola", "Il tavolo tondo vicino alla cucina", "La zona pranzo con il tavolo bianco", "Il tavolo da pranzo con l'orchidea"], []),
+        ("Camera matrimoniale", "Ampia e silenziosa, con due finestre che la riempiono di luce. Oltre al letto matrimoniale c'è un comodo divano letto.",
+         ["La camera matrimoniale con il letto in ferro battuto", "La camera matrimoniale con il divano letto", "La camera matrimoniale vista dalla porta"], ["Letto matrimoniale", "Divano letto"]),
+        ("Mansarda", "Il rifugio sotto il tetto in legno, con il lucernario: la stanza preferita da chi ama dormire un po' di più.",
+         ["La mansarda con il soffitto in legno e il lucernario", "Il letto della mansarda"], ["Letto matrimoniale alla francese"]),
+        ("Cameretta", "Piccola e raccolta, con le stampe in bianco e nero alle pareti: perfetta per un bambino o per chi viaggia da solo.",
+         ["La cameretta con il letto singolo"], ["Letto singolo"]),
+        ("Bagno", "Con doccia e bidet. Asciugamani, lenzuola e un set di cortesia vi aspettano già, e in casa c'è anche la lavatrice.",
+         ["Il bagno con la doccia", "Il set di cortesia in bagno"], ["Set di cortesia", "Asciugamani e lenzuola"]),
+    ],
+    posti=["camere da letto", "divani letto", "bagno con doccia", "balcone"],
+    occh_dintorni="tutto a portata di mano", h2_dintorni="A piedi da Ca' Hygge",
+    dintorni_p="A 10 minuti a piedi sia dal centro di Lavagna sia da quello di Chiavari, e a un quarto d'ora dal mare. Per l'auto ci sono parcheggi pubblici nelle immediate vicinanze.",
+    tappe=[("Ca' Hygge", "si parte da qui"), ("Fermata bus", "proprio sotto casa"), ("Supermercato", "per la spesa"),
+           ("Centro di Lavagna", ""), ("Centro di Chiavari", ""), ("Mare", ""), ("Stazione", "")],
+    bici_aria="Illustrazione di una bicicletta con il cestino, davanti al mare e al sole",
+    bici_occh="pedalando verso il mare", bici_h3="Noleggio biciclette per adulti",
+    bici_p="Da Ca' Hygge potete muovervi anche in bicicletta: è disponibile il noleggio di bici per adulti, perfetto per arrivare al mare, fare un giro sul lungomare o raggiungere Chiavari senza pensieri di parcheggio.",
+    bici_nota="Chiedetecele quando ci scrivete per la disponibilità.",
+    gite=["La Baia del Silenzio e la Baia delle Favole, a pochi minuti.", "Monterosso, Vernazza, Manarola: tutte in treno, senza pensieri di parcheggio.",
+          "Le case colorate affacciate sul porticciolo.", "In treno fino a Santa Margherita, poi bus o battello."],
+    in_treno="In treno da Lavagna",
+    occh_voci="dicono di noi", h2_voci="Le parole dei nostri ospiti", recensioni="55 recensioni su Booking.com",
+    voci=["Casa curata nei particolari… Fornita di tutto ciò che può servire in ogni stanza.",
+          "Posizione, arredamento, accessori per vivere l'appartamento.",
+          "Spaziosa, accogliente e moderna. Ci siamo trovati veramente bene."],
+    voce_cap="Ospite su Booking.com",
+    h3_servizi="Cosa trovate in casa",
+    servizi=["Parcheggi pubblici vicinissimi", "WiFi gratuito", "Netflix e Prime Video", "Lavatrice", "Microonde", "Bollitore",
+             "Macchina da caffè", "Animali ammessi", "Balcone", "Lenzuola e asciugamani", "Giochi da tavolo", "Noleggio bici per adulti", "Stazione a 15 minuti"],
+    occh_stampe="un ricordo da portare a casa",
+    stampe_p="Una serie di stampe digitali ispirate ai colori, alla luce e all'atmosfera della Riviera: il porto, il tramonto, le vele, la mappa illustrata di Lavagna. Un frammento autentico di Lavagna da appendere a casa vostra.",
+    stampe_btn="Chiedi le stampe", scrivete_a="Scrivete a", stampe_alt="Stampa illustrata di Lavagna, collezione Visioni di Riviera",
+    stampe_oggetto="Stampe Visioni di Riviera",
+    aspettiamo="vi aspettiamo!", h2_prenota="Disponibilità e prenotazioni",
+    risparmio="Prenotando direttamente da qui trovate sempre le tariffe più convenienti.",
+    prenota_p="Per sapere se le vostre date sono libere e per prenotare, scriveteci direttamente: vi rispondiamo noi, senza intermediari.",
+    arrivo="Arrivo", partenza="Partenza", adulti="Adulti", bambini="Bambini", eta_titolo="Età dei bambini",
+    cane="Viaggiamo con un animale", invia="Scrivici per la disponibilità", oppure="Oppure scriveteci a",
+    piede="Appartamento vacanze a Lavagna (GE)",
+    js=dict(scegli="Scegli", meno1="meno di 1 anno", anno="anno", anni="anni", bambino="Bambino",
+            errDate="Indicate le date di arrivo e di partenza.", errOrdine="La partenza deve essere dopo l’arrivo.",
+            errEta="Indicate l’età di ogni bambino.", ok="Si apre la vostra app di posta con il messaggio già pronto: basta premere invia.",
+            mIntro="Ciao! Vorremmo sapere se Ca’ Hygge è disponibile:", arrivo="Arrivo", partenza="Partenza", notte="notte", notti="notti",
+            adulti="Adulti", bambini="Bambini", etaBreve="età", mAnimale="Viaggiamo con un animale.", mGrazie="Grazie!",
+            mOggetto="Disponibilità Ca’ Hygge"),
+)
 
-VOCI = [("Casa curata nei particolari… Fornita di tutto ciò che può servire in ogni stanza.", ),
-        ("Posizione, parcheggio gratuito adiacente, ottima ristrutturazione. Proprietari gentilissimi.", ),
-        ("Spaziosa, accogliente e moderna. Ci siamo trovati veramente bene.", )]
+T["en"] = dict(
+    locale="en_GB",
+    title="Ca' Hygge · Holiday apartment in Lavagna, near the sea",
+    desc="Ca' Hygge is a bright holiday apartment in Lavagna, Italian Riviera, a 10-minute walk from the centres of Lavagna and Chiavari. Three bedrooms, WiFi, Netflix and Prime Video, washing machine, pets welcome.",
+    og_desc="A bright apartment a short walk from the sea, where relaxation and beauty meet.",
+    salta="Skip to content", menu="Menu", lingua="Language",
+    nav=["The house", "Rooms", "Surroundings", "Guests", "Book"],
+    hero_alt="The bright living room of Ca' Hygge with wooden floors and a white staircase",
+    benvenuti="welcome home",
+    h1="Ca' Hygge, your home in Lavagna",
+    lead="A bright apartment a short walk from the sea, where relaxation and beauty meet.",
+    vantaggio="You'll only find our best rates by booking here, directly with us.",
+    cta_disp="Check availability", cta_stanze="See the rooms",
+    voto="9.5", eccezionale="Exceptional", su_booking="on Booking.com · 55 reviews",
+    tramonto="Tonight in Lavagna the sun sets at", tramonto_nota="just enough time to get to the beach",
+    casa_alt="The round table with white chairs next to the kitchen", nota_caffe="the coffee is ready",
+    occh_hygge="why “hygge”?", h2_casa="A seaside house that feels like home", parola_danese="Danish word",
+    diz="the feeling of warmth and wellbeing found in simple things: a blanket, soft light, time spent together.",
+    casa_p="That's what we wanted Ca' Hygge to be: a place to put your bags down and feel at ease straight away. Three bedrooms, a bright living room, a kitchen to really cook in, and the sea close by.",
+    piccole=["Tips and directions also left in writing", "Plants, natural light and warm wooden floors", "Board games for evenings in", "Your dog is welcome too"],
+    occh_stanze="take a look around", h2_stanze="The rooms", tabs_label="Rooms of the house", mostra="Show",
+    stanze=[
+        ("Living room", "The heart of the house: bright, with warm wooden floors, the sofa and the white staircase leading up to the attic room. In the evening: Netflix and Prime Video on the TV, a board game, or planning tomorrow's trip.",
+         ["The bright living room with the staircase to the attic", "The living room with the sofa and French window", "The living room seen from the entrance"], ["Sofa bed"]),
+        ("Kitchen and dining", "A white, fully equipped kitchen with coffee machine, kettle and microwave, and a round table for a slow breakfast before heading to the beach.",
+         ["The equipped kitchen with plants on the shelf", "The round table next to the kitchen", "The dining area with the white table", "The dining table with the orchid"], []),
+        ("Double bedroom", "Spacious and quiet, with two windows that fill it with light. Besides the double bed there is a comfortable sofa bed.",
+         ["The double bedroom with the wrought-iron bed", "The double bedroom with the sofa bed", "The double bedroom seen from the door"], ["Double bed", "Sofa bed"]),
+        ("Attic room", "The hideaway under the wooden roof, with a skylight: the favourite room for those who like a lie-in.",
+         ["The attic room with wooden ceiling and skylight", "The bed in the attic room"], ["French double bed"]),
+        ("Small bedroom", "Small and cosy, with black-and-white prints on the walls: perfect for a child or a solo traveller.",
+         ["The small bedroom with the single bed"], ["Single bed"]),
+        ("Bathroom", "With shower and bidet. Towels, bed linen and a courtesy set are waiting for you, and there's a washing machine in the house.",
+         ["The bathroom with the shower", "The courtesy set in the bathroom"], ["Courtesy set", "Towels and bed linen"]),
+    ],
+    posti=["bedrooms", "sofa beds", "bathroom with shower", "balcony"],
+    occh_dintorni="everything within reach", h2_dintorni="On foot from Ca' Hygge",
+    dintorni_p="A 10-minute walk from both Lavagna and Chiavari town centres, and 15 minutes from the sea. If you come by car, there is public parking right nearby.",
+    tappe=[("Ca' Hygge", "start here"), ("Bus stop", "right outside"), ("Supermarket", "for groceries"),
+           ("Lavagna centre", ""), ("Chiavari centre", ""), ("Sea", ""), ("Station", "")],
+    bici_aria="Illustration of a bicycle with a basket, in front of the sea and the sun",
+    bici_occh="cycling to the sea", bici_h3="Bike hire for adults",
+    bici_p="You can also get around by bike: bike hire for adults is available, perfect for reaching the beach, riding along the seafront or getting to Chiavari without worrying about parking.",
+    bici_nota="Just ask when you write to us about availability.",
+    gite=["The Bay of Silence and the Bay of Fables, just a few minutes away.", "Monterosso, Vernazza, Manarola: all by train, no parking worries.",
+          "Colourful houses overlooking the little harbour.", "Train to Santa Margherita, then bus or boat."],
+    in_treno="By train from Lavagna",
+    occh_voci="what guests say", h2_voci="In our guests' words", recensioni="55 reviews on Booking.com",
+    voci=["A house cared for down to the details… Equipped with everything you could need in every room.",
+          "Location, furnishings, everything you need to live in the apartment.",
+          "Spacious, welcoming and modern. We felt really at home."],
+    voce_cap="Guest on Booking.com · translated from Italian",
+    h3_servizi="What you'll find",
+    servizi=["Public parking right nearby", "Free WiFi", "Netflix and Prime Video", "Washing machine", "Microwave", "Kettle",
+             "Coffee machine", "Pets allowed", "Balcony", "Bed linen and towels", "Board games", "Bike hire for adults", "Station 15 minutes away"],
+    occh_stampe="a souvenir to take home",
+    stampe_p="A series of digital prints inspired by the colours, light and atmosphere of the Riviera: the harbour, the sunset, the sails, the illustrated map of Lavagna. An authentic piece of Lavagna to hang at home.",
+    stampe_btn="Ask about the prints", scrivete_a="Write to", stampe_alt="Illustrated print of Lavagna, Visioni di Riviera collection",
+    stampe_oggetto="Visioni di Riviera prints",
+    aspettiamo="see you soon!", h2_prenota="Availability and bookings",
+    risparmio="Booking directly here always gets you our best rates.",
+    prenota_p="To find out if your dates are free and to book, write to us directly: we'll reply personally, with no middlemen.",
+    arrivo="Arrival", partenza="Departure", adulti="Adults", bambini="Children", eta_titolo="Children's ages",
+    cane="We're travelling with a pet", invia="Ask us about availability", oppure="Or write to us at",
+    piede="Holiday apartment in Lavagna (Genoa, Italy)",
+    js=dict(scegli="Choose", meno1="under 1 year", anno="year", anni="years", bambino="Child",
+            errDate="Please enter your arrival and departure dates.", errOrdine="Departure must be after arrival.",
+            errEta="Please enter the age of each child.", ok="Your email app will open with the message ready: just press send.",
+            mIntro="Hello! We'd like to know if Ca’ Hygge is available:", arrivo="Arrival", partenza="Departure", notte="night", notti="nights",
+            adulti="Adults", bambini="Children", etaBreve="ages", mAnimale="We're travelling with a pet.", mGrazie="Thank you!",
+            mOggetto="Availability Ca’ Hygge"),
+)
 
-SERVIZI = [("auto", "Parcheggio gratuito"), ("wifi", "WiFi gratuito"), ("zampa", "Animali ammessi"), ("balcone", "Balcone"),
-           ("lenzuola", "Lenzuola e asciugamani"), ("caffe", "Macchina da caffè"), ("giochi", "Giochi da tavolo"), ("treno", "Stazione a 15 minuti"), ("bici", "Noleggio bici per adulti")]
+T["de"] = dict(
+    locale="de_DE",
+    title="Ca' Hygge · Ferienwohnung in Lavagna, nahe am Meer",
+    desc="Ca' Hygge ist eine helle Ferienwohnung in Lavagna an der Italienischen Riviera, 10 Gehminuten von den Zentren von Lavagna und Chiavari. Drei Schlafzimmer, WLAN, Netflix und Prime Video, Waschmaschine, Haustiere willkommen.",
+    og_desc="Eine helle Wohnung nur wenige Schritte vom Meer, wo Entspannung und Schönheit sich begegnen.",
+    salta="Zum Inhalt", menu="Menü", lingua="Sprache",
+    nav=["Das Haus", "Zimmer", "Umgebung", "Gäste", "Buchen"],
+    hero_alt="Das helle Wohnzimmer von Ca' Hygge mit Parkett und weißer Treppe",
+    benvenuti="willkommen zu Hause",
+    h1="Ca' Hygge, Ihr Zuhause in Lavagna",
+    lead="Eine helle Wohnung nur wenige Schritte vom Meer, wo Entspannung und Schönheit sich begegnen.",
+    vantaggio="Die günstigsten Preise gibt es nur bei direkter Buchung hier bei uns.",
+    cta_disp="Verfügbarkeit anfragen", cta_stanze="Zimmer ansehen",
+    voto="9,5", eccezionale="Hervorragend", su_booking="auf Booking.com · 55 Bewertungen",
+    tramonto="Heute Abend geht die Sonne in Lavagna unter um", tramonto_nota="gerade genug Zeit für den Weg zum Strand",
+    casa_alt="Der runde Tisch mit weißen Stühlen neben der Küche", nota_caffe="der Kaffee ist fertig",
+    occh_hygge="warum „hygge“?", h2_casa="Ein Haus am Meer, das sich wie Zuhause anfühlt", parola_danese="dänisches Wort",
+    diz="das Gefühl von Wärme und Wohlbefinden in einfachen Dingen: eine Decke, sanftes Licht, gemeinsame Zeit.",
+    casa_p="Genau das sollte Ca' Hygge sein: ein Ort, an dem man die Koffer abstellt und sich sofort wohlfühlt. Drei Schlafzimmer, ein helles Wohnzimmer, eine Küche zum richtigen Kochen und das Meer ganz in der Nähe.",
+    piccole=["Hinweise und Tipps auch schriftlich", "Pflanzen, Tageslicht und warmes Parkett", "Brettspiele für gemütliche Abende", "Auch Ihr Hund ist willkommen"],
+    occh_stanze="ein kleiner Rundgang", h2_stanze="Die Zimmer", tabs_label="Zimmer des Hauses", mostra="Zeigen",
+    stanze=[
+        ("Wohnzimmer", "Das Herz des Hauses: hell, mit warmem Parkett, dem Sofa und der weißen Treppe zum Dachzimmer. Abends Netflix und Prime Video auf dem Fernseher, ein Brettspiel oder die Planung des nächsten Ausflugs.",
+         ["Das helle Wohnzimmer mit der Treppe zum Dachzimmer", "Das Wohnzimmer mit Sofa und Balkontür", "Das Wohnzimmer vom Eingang aus"], ["Schlafsofa"]),
+        ("Küche und Essbereich", "Eine weiße, voll ausgestattete Küche mit Kaffeemaschine, Wasserkocher und Mikrowelle und ein runder Tisch für ein entspanntes Frühstück, bevor es zum Strand geht.",
+         ["Die ausgestattete Küche mit Pflanzen auf dem Regal", "Der runde Tisch neben der Küche", "Der Essbereich mit dem weißen Tisch", "Der Esstisch mit der Orchidee"], []),
+        ("Doppelzimmer", "Geräumig und ruhig, mit zwei Fenstern, die es mit Licht füllen. Neben dem Doppelbett gibt es ein bequemes Schlafsofa.",
+         ["Das Doppelzimmer mit dem schmiedeeisernen Bett", "Das Doppelzimmer mit dem Schlafsofa", "Das Doppelzimmer von der Tür aus"], ["Doppelbett", "Schlafsofa"]),
+        ("Dachzimmer", "Der Rückzugsort unter dem Holzdach, mit Dachfenster: das Lieblingszimmer aller, die gern etwas länger schlafen.",
+         ["Das Dachzimmer mit Holzdecke und Dachfenster", "Das Bett im Dachzimmer"], ["Französisches Bett"]),
+        ("Kleines Zimmer", "Klein und gemütlich, mit Schwarz-Weiß-Drucken an den Wänden: ideal für ein Kind oder Alleinreisende.",
+         ["Das kleine Zimmer mit dem Einzelbett"], ["Einzelbett"]),
+        ("Bad", "Mit Dusche und Bidet. Handtücher, Bettwäsche und Pflegeprodukte liegen bereit, und in der Wohnung gibt es eine Waschmaschine.",
+         ["Das Bad mit der Dusche", "Die Pflegeprodukte im Bad"], ["Pflegeprodukte", "Handtücher und Bettwäsche"]),
+    ],
+    posti=["Schlafzimmer", "Schlafsofas", "Bad mit Dusche", "Balkon"],
+    occh_dintorni="alles in der Nähe", h2_dintorni="Zu Fuß von Ca' Hygge",
+    dintorni_p="10 Gehminuten bis in die Zentren von Lavagna und Chiavari und eine Viertelstunde bis zum Meer. Öffentliche Parkplätze gibt es in unmittelbarer Nähe.",
+    tappe=[("Ca' Hygge", "hier geht's los"), ("Bushaltestelle", "direkt vor dem Haus"), ("Supermarkt", "zum Einkaufen"),
+           ("Zentrum Lavagna", ""), ("Zentrum Chiavari", ""), ("Meer", ""), ("Bahnhof", "")],
+    bici_aria="Illustration eines Fahrrads mit Korb vor Meer und Sonne",
+    bici_occh="mit dem Rad ans Meer", bici_h3="Fahrradverleih für Erwachsene",
+    bici_p="Sie können sich auch mit dem Fahrrad bewegen: Es gibt einen Fahrradverleih für Erwachsene, ideal für den Weg zum Strand, eine Runde an der Uferpromenade oder einen Ausflug nach Chiavari ohne Parkplatzsorgen.",
+    bici_nota="Fragen Sie einfach danach, wenn Sie uns wegen der Verfügbarkeit schreiben.",
+    gite=["Die Baia del Silenzio und die Baia delle Favole, nur wenige Minuten entfernt.", "Monterosso, Vernazza, Manarola: alles mit dem Zug, ohne Parkplatzsorgen.",
+          "Bunte Häuser rund um den kleinen Hafen.", "Mit dem Zug nach Santa Margherita, dann Bus oder Boot."],
+    in_treno="Mit dem Zug ab Lavagna",
+    occh_voci="was Gäste sagen", h2_voci="Die Worte unserer Gäste", recensioni="55 Bewertungen auf Booking.com",
+    voci=["Ein Haus, gepflegt bis ins Detail… In jedem Raum ist alles vorhanden, was man braucht.",
+          "Lage, Einrichtung, Ausstattung für das Leben in der Wohnung.",
+          "Geräumig, gemütlich und modern. Wir haben uns wirklich wohlgefühlt."],
+    voce_cap="Gast auf Booking.com · aus dem Italienischen übersetzt",
+    h3_servizi="Ausstattung",
+    servizi=["Öffentliche Parkplätze ganz in der Nähe", "Kostenloses WLAN", "Netflix und Prime Video", "Waschmaschine", "Mikrowelle", "Wasserkocher",
+             "Kaffeemaschine", "Haustiere erlaubt", "Balkon", "Bettwäsche und Handtücher", "Brettspiele", "Fahrradverleih für Erwachsene", "Bahnhof in 15 Minuten"],
+    occh_stampe="eine Erinnerung für Zuhause",
+    stampe_p="Eine Serie digitaler Drucke, inspiriert von Farben, Licht und Stimmung der Riviera: der Hafen, der Sonnenuntergang, die Segel, die illustrierte Karte von Lavagna. Ein echtes Stück Lavagna für Ihre Wand.",
+    stampe_btn="Drucke anfragen", scrivete_a="Schreiben Sie an", stampe_alt="Illustrierter Druck von Lavagna, Kollektion Visioni di Riviera",
+    stampe_oggetto="Drucke Visioni di Riviera",
+    aspettiamo="wir freuen uns auf Sie!", h2_prenota="Verfügbarkeit und Buchung",
+    risparmio="Bei direkter Buchung hier erhalten Sie immer die günstigsten Preise.",
+    prenota_p="Um zu erfahren, ob Ihre Daten frei sind, und um zu buchen, schreiben Sie uns direkt: Wir antworten persönlich, ohne Vermittler.",
+    arrivo="Anreise", partenza="Abreise", adulti="Erwachsene", bambini="Kinder", eta_titolo="Alter der Kinder",
+    cane="Wir reisen mit einem Haustier", invia="Verfügbarkeit anfragen", oppure="Oder schreiben Sie an",
+    piede="Ferienwohnung in Lavagna (Genua, Italien)",
+    js=dict(scegli="Auswählen", meno1="unter 1 Jahr", anno="Jahr", anni="Jahre", bambino="Kind",
+            errDate="Bitte geben Sie An- und Abreisedatum an.", errOrdine="Die Abreise muss nach der Anreise liegen.",
+            errEta="Bitte geben Sie das Alter jedes Kindes an.", ok="Ihr E-Mail-Programm öffnet sich mit der fertigen Nachricht: einfach auf Senden drücken.",
+            mIntro="Hallo! Wir möchten gern wissen, ob Ca’ Hygge frei ist:", arrivo="Anreise", partenza="Abreise", notte="Nacht", notti="Nächte",
+            adulti="Erwachsene", bambini="Kinder", etaBreve="Alter", mAnimale="Wir reisen mit einem Haustier.", mGrazie="Vielen Dank!",
+            mOggetto="Verfügbarkeit Ca’ Hygge"),
+)
 
+T["fr"] = dict(
+    locale="fr_FR",
+    title="Ca' Hygge · Appartement de vacances à Lavagna, près de la mer",
+    desc="Ca' Hygge est un appartement lumineux à Lavagna, sur la Riviera italienne, à 10 minutes à pied des centres de Lavagna et de Chiavari. Trois chambres, WiFi, Netflix et Prime Video, lave-linge, animaux acceptés.",
+    og_desc="Un appartement lumineux à deux pas de la mer, où détente et beauté se rencontrent.",
+    salta="Aller au contenu", menu="Menu", lingua="Langue",
+    nav=["La maison", "Les pièces", "Alentours", "Hôtes", "Réserver"],
+    hero_alt="Le salon lumineux de Ca' Hygge avec son parquet et son escalier blanc",
+    benvenuti="bienvenue à la maison",
+    h1="Ca' Hygge, votre maison à Lavagna",
+    lead="Un appartement lumineux à deux pas de la mer, où détente et beauté se rencontrent.",
+    vantaggio="Nos meilleurs tarifs, vous ne les trouverez qu'en réservant ici, directement avec nous.",
+    cta_disp="Demander les disponibilités", cta_stanze="Voir les pièces",
+    voto="9,5", eccezionale="Exceptionnel", su_booking="sur Booking.com · 55 avis",
+    tramonto="Ce soir à Lavagna, le soleil se couche à", tramonto_nota="juste le temps d'arriver à la plage",
+    casa_alt="La table ronde aux chaises blanches près de la cuisine", nota_caffe="le café est prêt",
+    occh_hygge="pourquoi « hygge » ?", h2_casa="Une maison à la mer qui sent bon la maison", parola_danese="mot danois",
+    diz="le sentiment de chaleur et de bien-être que procurent les choses simples : une couverture, une lumière douce, le temps passé ensemble.",
+    casa_p="C'est ce que nous voulions pour Ca' Hygge : un endroit où poser ses valises et se sentir tout de suite bien. Trois chambres, un salon lumineux, une vraie cuisine pour cuisiner, et la mer tout près.",
+    piccole=["Indications et conseils laissés aussi par écrit", "Plantes, lumière naturelle et parquet chaleureux", "Jeux de société pour les soirées", "Votre chien est le bienvenu aussi"],
+    occh_stanze="faites le tour", h2_stanze="Les pièces", tabs_label="Pièces de la maison", mostra="Afficher",
+    stanze=[
+        ("Salon", "Le cœur de la maison : lumineux, avec son parquet chaleureux, le canapé et l'escalier blanc qui monte vers la mansarde. Le soir, Netflix et Prime Video à la télé, un jeu de société ou le programme de l'excursion du lendemain.",
+         ["Le salon lumineux avec l'escalier vers la mansarde", "Le salon avec le canapé et la porte-fenêtre", "Le salon vu depuis l'entrée"], ["Canapé-lit"]),
+        ("Cuisine et repas", "Une cuisine blanche et équipée, avec machine à café, bouilloire et micro-ondes, et une table ronde pour un petit-déjeuner tranquille avant de descendre à la plage.",
+         ["La cuisine équipée avec des plantes sur l'étagère", "La table ronde près de la cuisine", "Le coin repas avec la table blanche", "La table à manger avec l'orchidée"], []),
+        ("Chambre double", "Spacieuse et calme, avec deux fenêtres qui la remplissent de lumière. En plus du lit double, il y a un canapé-lit confortable.",
+         ["La chambre double avec le lit en fer forgé", "La chambre double avec le canapé-lit", "La chambre double vue depuis la porte"], ["Lit double", "Canapé-lit"]),
+        ("Mansarde", "Le refuge sous le toit en bois, avec son velux : la chambre préférée de ceux qui aiment faire la grasse matinée.",
+         ["La mansarde avec plafond en bois et velux", "Le lit de la mansarde"], ["Lit double « à la française »"]),
+        ("Petite chambre", "Petite et douillette, avec des tirages en noir et blanc aux murs : parfaite pour un enfant ou pour qui voyage seul.",
+         ["La petite chambre avec le lit simple"], ["Lit simple"]),
+        ("Salle de bain", "Avec douche et bidet. Serviettes, draps et produits d'accueil vous attendent, et il y a aussi un lave-linge dans l'appartement.",
+         ["La salle de bain avec la douche", "Les produits d'accueil dans la salle de bain"], ["Produits d'accueil", "Serviettes et draps"]),
+    ],
+    posti=["chambres", "canapés-lits", "salle de bain avec douche", "balcon"],
+    occh_dintorni="tout à portée de main", h2_dintorni="À pied depuis Ca' Hygge",
+    dintorni_p="À 10 minutes à pied des centres de Lavagna et de Chiavari, et à un quart d'heure de la mer. Pour la voiture, il y a des parkings publics à proximité immédiate.",
+    tappe=[("Ca' Hygge", "point de départ"), ("Arrêt de bus", "juste en bas"), ("Supermarché", "pour les courses"),
+           ("Centre de Lavagna", ""), ("Centre de Chiavari", ""), ("Mer", ""), ("Gare", "")],
+    bici_aria="Illustration d'un vélo avec un panier, devant la mer et le soleil",
+    bici_occh="à vélo vers la mer", bici_h3="Location de vélos pour adultes",
+    bici_p="Vous pouvez aussi vous déplacer à vélo : une location de vélos pour adultes est disponible, idéale pour aller à la plage, longer le front de mer ou rejoindre Chiavari sans souci de stationnement.",
+    bici_nota="Demandez-les quand vous nous écrivez pour les disponibilités.",
+    gite=["La Baia del Silenzio et la Baia delle Favole, à quelques minutes.", "Monterosso, Vernazza, Manarola : tout en train, sans souci de stationnement.",
+          "Des maisons colorées face au petit port.", "En train jusqu'à Santa Margherita, puis bus ou bateau."],
+    in_treno="En train depuis Lavagna",
+    occh_voci="ce qu'ils en disent", h2_voci="Les mots de nos hôtes", recensioni="55 avis sur Booking.com",
+    voci=["Une maison soignée dans les moindres détails… Équipée de tout ce qu'il faut dans chaque pièce.",
+          "L'emplacement, la décoration, tout le nécessaire pour vivre l'appartement.",
+          "Spacieux, accueillant et moderne. Nous nous y sommes vraiment sentis bien."],
+    voce_cap="Hôte sur Booking.com · traduit de l'italien",
+    h3_servizi="Ce que vous trouverez",
+    servizi=["Parkings publics tout près", "WiFi gratuit", "Netflix et Prime Video", "Lave-linge", "Micro-ondes", "Bouilloire",
+             "Machine à café", "Animaux acceptés", "Balcon", "Draps et serviettes", "Jeux de société", "Location de vélos pour adultes", "Gare à 15 minutes"],
+    occh_stampe="un souvenir à rapporter",
+    stampe_p="Une série d'impressions numériques inspirées des couleurs, de la lumière et de l'atmosphère de la Riviera : le port, le coucher de soleil, les voiles, la carte illustrée de Lavagna. Un fragment authentique de Lavagna à accrocher chez vous.",
+    stampe_btn="Demander les impressions", scrivete_a="Écrivez à", stampe_alt="Impression illustrée de Lavagna, collection Visioni di Riviera",
+    stampe_oggetto="Impressions Visioni di Riviera",
+    aspettiamo="à bientôt !", h2_prenota="Disponibilités et réservations",
+    risparmio="En réservant directement ici, vous profitez toujours de nos meilleurs tarifs.",
+    prenota_p="Pour savoir si vos dates sont libres et pour réserver, écrivez-nous directement : nous vous répondons nous-mêmes, sans intermédiaire.",
+    arrivo="Arrivée", partenza="Départ", adulti="Adultes", bambini="Enfants", eta_titolo="Âge des enfants",
+    cane="Nous voyageons avec un animal", invia="Demander les disponibilités", oppure="Ou écrivez-nous à",
+    piede="Appartement de vacances à Lavagna (Gênes, Italie)",
+    js=dict(scegli="Choisir", meno1="moins d'1 an", anno="an", anni="ans", bambino="Enfant",
+            errDate="Indiquez vos dates d'arrivée et de départ.", errOrdine="Le départ doit être après l’arrivée.",
+            errEta="Indiquez l’âge de chaque enfant.", ok="Votre messagerie s’ouvre avec le message prêt : il suffit d’appuyer sur envoyer.",
+            mIntro="Bonjour ! Nous aimerions savoir si Ca’ Hygge est disponible :", arrivo="Arrivée", partenza="Départ", notte="nuit", notti="nuits",
+            adulti="Adultes", bambini="Enfants", etaBreve="âges", mAnimale="Nous voyageons avec un animal.", mGrazie="Merci !",
+            mOggetto="Disponibilités Ca’ Hygge"),
+)
 
-def stanza_html(i, s):
-    chiave, nome, testo, foto, letti = s
-    mini = "".join(
-        f'<button type="button" aria-pressed="{"true" if j == 0 else "false"}" data-src="{url(F[k], 1600)}" data-alt="{html.escape(a)}" aria-label="Mostra: {html.escape(a)}">'
-        f'<img src="{url(F[k], 200)}" alt="" loading="lazy"></button>'
-        for j, (k, a) in enumerate(foto)) if len(foto) > 1 else ""
-    let = "".join(f'<li>{ICONE[ic]}<span>{t}</span></li>' for ic, t in letti)
-    return f'''<div class="stanza" role="tabpanel" id="pannello-{chiave}" aria-labelledby="tab-{chiave}"{"" if i == 0 else " hidden"}>
-      <div><div class="grande">{img(F[foto[0][0]], foto[0][1], "(max-width:860px) 92vw, 60vw", lazy=i > 0)}</div>
-      {f'<div class="miniature">{mini}</div>' if mini else ''}</div>
-      <div class="info"><h3>{nome}</h3><p>{testo}</p>{f'<ul class="letti">{let}</ul>' if let else ''}</div>
-    </div>'''
+T["es"] = dict(
+    locale="es_ES",
+    title="Ca' Hygge · Apartamento vacacional en Lavagna, cerca del mar",
+    desc="Ca' Hygge es un apartamento luminoso en Lavagna, en la Riviera italiana, a 10 minutos a pie de los centros de Lavagna y Chiavari. Tres dormitorios, WiFi, Netflix y Prime Video, lavadora, se admiten mascotas.",
+    og_desc="Un apartamento luminoso a pocos pasos del mar, donde la calma y la belleza se encuentran.",
+    salta="Ir al contenido", menu="Menú", lingua="Idioma",
+    nav=["La casa", "Habitaciones", "Alrededores", "Huéspedes", "Reservar"],
+    hero_alt="El luminoso salón de Ca' Hygge con suelo de parqué y escalera blanca",
+    benvenuti="bienvenidos a casa",
+    h1="Ca' Hygge, vuestra casa en Lavagna",
+    lead="Un apartamento luminoso a pocos pasos del mar, donde la calma y la belleza se encuentran.",
+    vantaggio="Las mejores tarifas solo las encontraréis reservando aquí, directamente con nosotros.",
+    cta_disp="Consultar disponibilidad", cta_stanze="Ver las habitaciones",
+    voto="9,5", eccezionale="Excepcional", su_booking="en Booking.com · 55 comentarios",
+    tramonto="Esta tarde en Lavagna el sol se pone a las", tramonto_nota="justo a tiempo para llegar a la playa",
+    casa_alt="La mesa redonda con sillas blancas junto a la cocina", nota_caffe="el café ya está listo",
+    occh_hygge="¿por qué «hygge»?", h2_casa="Una casa en el mar que se siente como hogar", parola_danese="palabra danesa",
+    diz="la sensación de calidez y bienestar que dan las cosas sencillas: una manta, una luz suave, el tiempo compartido.",
+    casa_p="Eso es lo que quisimos que fuera Ca' Hygge: un lugar donde dejar las maletas y sentirse a gusto enseguida. Tres dormitorios, un salón luminoso, una cocina para cocinar de verdad y el mar muy cerca.",
+    piccole=["Indicaciones y consejos también por escrito", "Plantas, luz natural y parqué cálido", "Juegos de mesa para las noches en casa", "Vuestro perro también es bienvenido"],
+    occh_stanze="echad un vistazo", h2_stanze="Las habitaciones", tabs_label="Habitaciones de la casa", mostra="Mostrar",
+    stanze=[
+        ("Salón", "El corazón de la casa: luminoso, con parqué cálido, el sofá y la escalera blanca que sube a la buhardilla. Por la noche, Netflix y Prime Video en la tele, un juego de mesa o el plan de la excursión del día siguiente.",
+         ["El salón luminoso con la escalera hacia la buhardilla", "El salón con el sofá y la puerta-ventana", "El salón visto desde la entrada"], ["Sofá cama"]),
+        ("Cocina y comedor", "Una cocina blanca y equipada, con cafetera, hervidor y microondas, y una mesa redonda para desayunar con calma antes de bajar a la playa.",
+         ["La cocina equipada con plantas en la repisa", "La mesa redonda junto a la cocina", "El comedor con la mesa blanca", "La mesa de comedor con la orquídea"], []),
+        ("Dormitorio doble", "Amplio y tranquilo, con dos ventanas que lo llenan de luz. Además de la cama doble, hay un cómodo sofá cama.",
+         ["El dormitorio doble con la cama de hierro forjado", "El dormitorio doble con el sofá cama", "El dormitorio doble visto desde la puerta"], ["Cama doble", "Sofá cama"]),
+        ("Buhardilla", "El refugio bajo el techo de madera, con claraboya: la habitación favorita de quien quiere dormir un poco más.",
+         ["La buhardilla con techo de madera y claraboya", "La cama de la buhardilla"], ["Cama doble pequeña"]),
+        ("Habitación pequeña", "Pequeña y acogedora, con láminas en blanco y negro en las paredes: perfecta para un niño o para quien viaja solo.",
+         ["La habitación pequeña con la cama individual"], ["Cama individual"]),
+        ("Baño", "Con ducha y bidé. Toallas, ropa de cama y productos de cortesía os esperan, y en casa también hay lavadora.",
+         ["El baño con la ducha", "Los productos de cortesía en el baño"], ["Productos de cortesía", "Toallas y ropa de cama"]),
+    ],
+    posti=["dormitorios", "sofás cama", "baño con ducha", "balcón"],
+    occh_dintorni="todo al alcance", h2_dintorni="A pie desde Ca' Hygge",
+    dintorni_p="A 10 minutos a pie de los centros de Lavagna y Chiavari, y a un cuarto de hora del mar. Para el coche hay aparcamientos públicos muy cerca.",
+    tappe=[("Ca' Hygge", "punto de partida"), ("Parada de autobús", "justo abajo"), ("Supermercado", "para la compra"),
+           ("Centro de Lavagna", ""), ("Centro de Chiavari", ""), ("Mar", ""), ("Estación", "")],
+    bici_aria="Ilustración de una bicicleta con cesta, delante del mar y el sol",
+    bici_occh="pedaleando hacia el mar", bici_h3="Alquiler de bicicletas para adultos",
+    bici_p="También podéis moveros en bicicleta: hay alquiler de bicis para adultos, perfecto para llegar a la playa, pasear por el paseo marítimo o ir a Chiavari sin preocuparos por aparcar.",
+    bici_nota="Pedídnoslas cuando nos escribáis para la disponibilidad.",
+    gite=["La Baia del Silenzio y la Baia delle Favole, a pocos minutos.", "Monterosso, Vernazza, Manarola: todo en tren, sin preocuparse por aparcar.",
+          "Casas de colores asomadas al pequeño puerto.", "En tren hasta Santa Margherita, luego autobús o barco."],
+    in_treno="En tren desde Lavagna",
+    occh_voci="lo que dicen", h2_voci="Las palabras de nuestros huéspedes", recensioni="55 comentarios en Booking.com",
+    voci=["Casa cuidada hasta el último detalle… Equipada con todo lo necesario en cada habitación.",
+          "Ubicación, decoración, todo lo necesario para vivir el apartamento.",
+          "Amplio, acogedor y moderno. Nos sentimos realmente a gusto."],
+    voce_cap="Huésped en Booking.com · traducido del italiano",
+    h3_servizi="Qué encontraréis",
+    servizi=["Aparcamientos públicos muy cerca", "WiFi gratis", "Netflix y Prime Video", "Lavadora", "Microondas", "Hervidor",
+             "Cafetera", "Se admiten mascotas", "Balcón", "Ropa de cama y toallas", "Juegos de mesa", "Alquiler de bicis para adultos", "Estación a 15 minutos"],
+    occh_stampe="un recuerdo para llevar a casa",
+    stampe_p="Una serie de láminas digitales inspiradas en los colores, la luz y el ambiente de la Riviera: el puerto, el atardecer, las velas, el mapa ilustrado de Lavagna. Un pedacito auténtico de Lavagna para colgar en casa.",
+    stampe_btn="Pedir las láminas", scrivete_a="Escribid a", stampe_alt="Lámina ilustrada de Lavagna, colección Visioni di Riviera",
+    stampe_oggetto="Láminas Visioni di Riviera",
+    aspettiamo="¡os esperamos!", h2_prenota="Disponibilidad y reservas",
+    risparmio="Reservando directamente aquí siempre tenéis las mejores tarifas.",
+    prenota_p="Para saber si vuestras fechas están libres y para reservar, escribidnos directamente: os respondemos nosotros, sin intermediarios.",
+    arrivo="Llegada", partenza="Salida", adulti="Adultos", bambini="Niños", eta_titolo="Edad de los niños",
+    cane="Viajamos con una mascota", invia="Consultar disponibilidad", oppure="O escribidnos a",
+    piede="Apartamento vacacional en Lavagna (Génova, Italia)",
+    js=dict(scegli="Elegir", meno1="menos de 1 año", anno="año", anni="años", bambino="Niño",
+            errDate="Indicad las fechas de llegada y salida.", errOrdine="La salida debe ser posterior a la llegada.",
+            errEta="Indicad la edad de cada niño.", ok="Se abre vuestra app de correo con el mensaje listo: solo hay que pulsar enviar.",
+            mIntro="¡Hola! Queremos saber si Ca’ Hygge está disponible:", arrivo="Llegada", partenza="Salida", notte="noche", notti="noches",
+            adulti="Adultos", bambini="Niños", etaBreve="edades", mAnimale="Viajamos con una mascota.", mGrazie="¡Gracias!",
+            mOggetto="Disponibilidad Ca’ Hygge"),
+)
 
+GITE_NOMI = ["Sestri Levante", "Cinque Terre", "Camogli", "Portofino"]
+MINUTI = ["0'", "1'", "3'", "10'", "10'", "15'", "15'"]
 
-def pagina():
-    tabs = "".join(f'<button type="button" role="tab" id="tab-{s[0]}" aria-controls="pannello-{s[0]}" aria-selected="{"true" if i == 0 else "false"}">{s[1]}</button>' for i, s in enumerate(STANZE))
-    pannelli = "".join(stanza_html(i, s) for i, s in enumerate(STANZE))
-    tappe = "".join(f'<div class="tappa"><small>{n}</small><b>{t}</b><span>{d}</span></div>' for n, t, d in TAPPE)
-    gite = "".join(f'<div class="gita appare"><h3>{n}</h3><p>{d}</p><span class="treno">In treno da Lavagna</span></div>' for n, d in GITE)
-    voci = "".join(f'<figure class="appare"><blockquote>{html.escape(v[0])}</blockquote><figcaption>Ospite su Booking.com</figcaption></figure>' for v in VOCI)
-    servizi = "".join(f'<li>{ICONE[i]}<span>{t}</span></li>' for i, t in SERVIZI)
-    stampe = "".join(img(s, "Stampa illustrata di Lavagna, collezione Visioni di Riviera", "(max-width:820px) 45vw, 20vw") for s in STAMPE)
-    mail_stampe = f"mailto:{EMAIL}?subject=Stampe%20Visioni%20di%20Riviera"
-    return f'''<!DOCTYPE html>
-<html lang="it">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ca' Hygge · Appartamento vacanze a Lavagna, vicino al mare</title>
-<meta name="description" content="Ca' Hygge è un appartamento luminoso a Lavagna, a pochi passi dal mare e a 10 minuti a piedi dai centri di Lavagna e Chiavari. Tre camere, parcheggio gratuito, animali ammessi.">
-<meta property="og:title" content="Ca' Hygge · Appartamento vacanze a Lavagna">
-<meta property="og:description" content="Un appartamento luminoso a pochi passi dal mare, dove relax e bellezza si incontrano.">
-<meta property="og:image" content="{url(F['soggiorno'], 1600)}">
-<meta property="og:locale" content="it_IT">
-<meta name="theme-color" content="#1f4b57">
-<link rel="icon" href="{url(LOGO, 128)}">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://static.wixstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Karla:wght@400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/stile.css?v=13">
-<script type="application/ld+json">{{"@context":"https://schema.org","@type":"VacationRental","name":"Ca' Hygge","description":"Appartamento vacanze a Lavagna, a pochi passi dal mare.","image":"{url(F['soggiorno'], 1600)}","address":{{"@type":"PostalAddress","addressLocality":"Lavagna","addressRegion":"GE","addressCountry":"IT"}},"email":"{EMAIL}"}}</script>
-</head>
-<body>
-<a class="salta" href="#casa">Vai al contenuto</a>
-<header class="testata">
-  <div class="wrap">
-    <a class="logo" href="#"><img src="{url(LOGO, 128)}" alt="" width="52" height="52"><b>CA' HYGGE</b></a>
-    <nav aria-label="Menu"><ul class="menu">
-      <li><a href="#casa">La casa</a></li><li><a href="#stanze">Le stanze</a></li><li><a href="#dintorni">Dintorni</a></li><li><a href="#ospiti">Ospiti</a></li>
-      <li><a class="btn pesca" href="#prenota">Prenota</a></li>
-    </ul></nav>
-  </div>
-</header>
-
-<main>
-<section class="hero">
-  {img(F['soggiorno'], "Il soggiorno luminoso di Ca' Hygge con il parquet e la scala bianca", "100vw", lazy=False)}
-  <div class="wrap">
-    <div>
-      <span class="mano">benvenuti a casa</span>
-      <h1>Ca' Hygge, la vostra casa a Lavagna</h1>
-      <p class="lead">Un appartamento luminoso a pochi passi dal mare, dove relax e bellezza si incontrano.</p>
-      <p class="vantaggio">Le tariffe più convenienti le trovate solo prenotando qui, direttamente con noi.</p>
-      <div class="azioni"><a class="btn pesca" href="#prenota">Chiedi la disponibilità</a><a class="btn chiaro" href="#stanze">Guarda le stanze</a></div>
-    </div>
-    <aside class="cartellino" data-tramonto>
-      <div class="voto"><b>9,5</b><span>Eccezionale<small>su Booking.com · 55 recensioni</small></span></div>
-      <hr>
-      <p class="tramonto" style="margin:0">Stasera a Lavagna il sole tramonta alle <b data-ora>—</b>.<br><span class="mano" style="font-size:22px">giusto il tempo di arrivare in spiaggia</span></p>
-    </aside>
-  </div>
-</section>
-<div class="corda" aria-hidden="true"></div>
-
-<section class="band" id="casa">
-  <div class="wrap hygge">
-    <div class="foto appare">{img(F['pranzo_c'], "Il tavolo tondo con le sedie bianche vicino alla cucina", "(max-width:820px) 90vw, 45vw")}<span class="nota">il caffè è già pronto</span></div>
-    <div class="appare">
-      <span class="occhiello">perché “hygge”?</span>
-      <h2>Una casa al mare che sa di casa</h2>
-      <p class="dizionario"><b>hygge</b> · <i>parola danese</i><br>la sensazione di calore e benessere che si prova nelle cose semplici: una coperta, una luce morbida, il tempo passato insieme.</p>
-      <p>Abbiamo voluto che Ca' Hygge fosse questo: un posto dove appoggiare le valigie e sentirsi subito a proprio agio. Tre camere, un soggiorno luminoso, una cucina dove cucinare davvero, e il mare a pochi passi.</p>
-      <ul class="piccole-cose">
-        <li>{ICONE['foglio']}<span>Indicazioni e consigli lasciati anche per iscritto</span></li>
-        <li>{ICONE['pianta']}<span>Piante, luce naturale e parquet caldo</span></li>
-        <li>{ICONE['giochi']}<span>Giochi da tavolo per le serate in casa</span></li>
-        <li>{ICONE['zampa']}<span>Anche il vostro cane è il benvenuto</span></li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section class="band stanze" id="stanze">
-  <div class="wrap">
-    <span class="occhiello">fate un giro</span>
-    <h2>Le stanze</h2>
-    <div class="tabs" role="tablist" aria-label="Stanze della casa">{tabs}</div>
-    {pannelli}
-    <div class="posti">
-      <div><b>3</b>camere da letto</div><div><b>2</b>divani letto</div><div><b>1</b>bagno con doccia</div><div><b>1</b>balcone</div>
-    </div>
-  </div>
-</section>
-
-<section class="band passeggiata" id="dintorni">
-  <div class="wrap">
-    <div class="intro appare">
-      <div><span class="occhiello">tutto a portata di mano</span><h2>A piedi da Ca' Hygge</h2></div>
-      <p style="max-width:42ch;margin:0">A pochi passi dal mare e a 10 minuti a piedi sia dal centro di Lavagna sia da quello di Chiavari. Qui la macchina potete lasciarla al parcheggio gratuito.</p>
-    </div>
-    <div class="percorso appare">{tappe}</div>
-    <div class="in-bici appare">
-      <svg class="bici-disegno" viewBox="0 0 420 300" role="img" aria-label="Illustrazione di una bicicletta con il cestino, davanti al mare e al sole">
+DOMINIO = "https://cahyggelavagna.com"
+BICI_SVG = '''<svg class="bici-disegno" viewBox="0 0 420 300" role="img" aria-label="{aria}">
         <circle cx="318" cy="92" r="46" fill="#f0b08c" opacity=".9"/>
         <path d="M0 170c40-14 80-14 120 0s80 14 120 0 80-14 120 0 40 10 60 4v126H0z" fill="#8cc3c8"/>
         <path d="M0 196c40-12 80-12 120 0s80 12 120 0 80-12 120 0 40 8 60 4v100H0z" fill="#d7ecee"/>
@@ -216,12 +457,142 @@ def pagina():
         <path d="M268 118h44M266 128h44" stroke="#f6efe4" stroke-width="3"/>
         <path d="M276 108c-4-14 4-24 14-22 0 10-6 18-14 22zM292 106c2-14 14-20 22-14-4 8-12 14-22 14z" fill="#74a57f"/>
         <circle cx="300" cy="98" r="6" fill="#f0b08c"/>
-      </svg>
+      </svg>'''
+
+
+def percorso(lang):
+    return "" if lang == "it" else f"{lang}/"
+
+
+def stanza_html(i, chiave, foto, icone_letti, testo, t):
+    nome, descr, alts, letti = testo
+    mini = "".join(
+        f'<button type="button" aria-pressed="{"true" if j == 0 else "false"}" data-src="{url(F[k], 1600)}" data-alt="{html.escape(a)}" aria-label="{t["mostra"]}: {html.escape(a)}">'
+        f'<img src="{url(F[k], 200)}" alt="" loading="lazy"></button>'
+        for j, (k, a) in enumerate(zip(foto, alts))) if len(foto) > 1 else ""
+    let = "".join(f'<li>{ICONE[ic]}<span>{tx}</span></li>' for ic, tx in zip(icone_letti, letti))
+    return f'''<div class="stanza" role="tabpanel" id="pannello-{chiave}" aria-labelledby="tab-{chiave}"{"" if i == 0 else " hidden"}>
+      <div><div class="grande">{img(F[foto[0]], alts[0], "(max-width:860px) 92vw, 60vw", lazy=i > 0)}</div>
+      {f'<div class="miniature">{mini}</div>' if mini else ''}</div>
+      <div class="info"><h3>{nome}</h3><p>{descr}</p>{f'<ul class="letti">{let}</ul>' if let else ''}</div>
+    </div>'''
+
+
+def pagina(lang):
+    t = T[lang]
+    su = "" if lang == "it" else "../"
+    tabs = "".join(f'<button type="button" role="tab" id="tab-{c}" aria-controls="pannello-{c}" aria-selected="{"true" if i == 0 else "false"}">{t["stanze"][i][0]}</button>'
+                   for i, (c, _, _) in enumerate(FOTO_STANZE))
+    pannelli = "".join(stanza_html(i, c, f, ic, t["stanze"][i], t) for i, (c, f, ic) in enumerate(FOTO_STANZE))
+    tappe = "".join(f'<div class="tappa"><small>{n}</small><b>{m}</b><span>{d}</span></div>' for (n, d), m in zip(t["tappe"], MINUTI))
+    gite = "".join(f'<div class="gita appare"><h3>{n}</h3><p>{d}</p><span class="treno">{t["in_treno"]}</span></div>' for n, d in zip(GITE_NOMI, t["gite"]))
+    voci = "".join(f'<figure class="appare"><blockquote>{html.escape(v)}</blockquote><figcaption>{t["voce_cap"]}</figcaption></figure>' for v in t["voci"])
+    servizi = "".join(f'<li>{ICONE[i]}<span>{tx}</span></li>' for i, tx in zip(ICONE_SERVIZI, t["servizi"]))
+    piccole = "".join(f'<li>{ICONE[i]}<span>{tx}</span></li>' for i, tx in zip(ICONE_PICCOLE, t["piccole"]))
+    stampe = "".join(img(s, t["stampe_alt"], "(max-width:820px) 45vw, 20vw") for s in STAMPE)
+    mail_stampe = f"mailto:{EMAIL}?subject=" + t["stampe_oggetto"].replace(" ", "%20")
+    lingue = "".join(
+        f'<li><a href="{su}{percorso(l)}" hreflang="{l}" lang="{l}" data-lingua="{l}"{" aria-current=\"true\"" if l == lang else ""}>{NOMI_LINGUA[l]}</a></li>' for l in LINGUE)
+    alternati = "".join(f'<link rel="alternate" hreflang="{l}" href="{DOMINIO}/{percorso(l)}">\n' for l in LINGUE) + \
+        f'<link rel="alternate" hreflang="x-default" href="{DOMINIO}/">\n'
+    # Alla prima visita, chi ha il browser in un'altra lingua viene portato alla sua versione
+    redirect = '''<script>(function(){try{if(localStorage.getItem('ca-lingua'))return;var l=(navigator.languages&&navigator.languages[0]||navigator.language||'it').slice(0,2).toLowerCase();if(['en','de','fr','es'].indexOf(l)>-1){localStorage.setItem('ca-lingua',l);location.replace(l+'/');}}catch(e){}})();</script>\n''' if lang == "it" else ""
+    import json
+    js_t = json.dumps(t["js"], ensure_ascii=False)
+    n = t["nav"]
+    return f'''<!DOCTYPE html>
+<html lang="{lang}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{redirect}<title>{html.escape(t["title"])}</title>
+<meta name="description" content="{html.escape(t["desc"])}">
+<link rel="canonical" href="{DOMINIO}/{percorso(lang)}">
+{alternati}<meta property="og:title" content="{html.escape(t["title"])}">
+<meta property="og:description" content="{html.escape(t["og_desc"])}">
+<meta property="og:image" content="{url(F['soggiorno'], 1600)}">
+<meta property="og:locale" content="{t["locale"]}">
+<meta name="theme-color" content="#1f4b57">
+<link rel="icon" href="{url(LOGO, 128)}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://static.wixstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Karla:wght@400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{su}css/stile.css?v=14">
+<script type="application/ld+json">{{"@context":"https://schema.org","@type":"VacationRental","name":"Ca' Hygge","description":{json.dumps(t["og_desc"], ensure_ascii=False)},"image":"{url(F['soggiorno'], 1600)}","address":{{"@type":"PostalAddress","addressLocality":"Lavagna","addressRegion":"GE","addressCountry":"IT"}},"email":"{EMAIL}"}}</script>
+</head>
+<body>
+<a class="salta" href="#casa">{t["salta"]}</a>
+<header class="testata">
+  <div class="wrap">
+    <a class="logo" href="{su}{percorso(lang)}"><img src="{url(LOGO, 128)}" alt="" width="52" height="52"><b>CA' HYGGE</b></a>
+    <nav aria-label="{t["menu"]}"><ul class="menu">
+      <li><a href="#casa">{n[0]}</a></li><li><a href="#stanze">{n[1]}</a></li><li><a href="#dintorni">{n[2]}</a></li><li><a href="#ospiti">{n[3]}</a></li>
+      <li class="lingue"><details><summary aria-label="{t["lingua"]}">{lang.upper()}</summary><ul>{lingue}</ul></details></li>
+      <li><a class="btn pesca" href="#prenota">{n[4]}</a></li>
+    </ul></nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  {img(F['soggiorno'], t["hero_alt"], "100vw", lazy=False)}
+  <div class="wrap">
+    <div>
+      <span class="mano">{t["benvenuti"]}</span>
+      <h1>{t["h1"]}</h1>
+      <p class="lead">{t["lead"]}</p>
+      <p class="vantaggio">{t["vantaggio"]}</p>
+      <div class="azioni"><a class="btn pesca" href="#prenota">{t["cta_disp"]}</a><a class="btn chiaro" href="#stanze">{t["cta_stanze"]}</a></div>
+    </div>
+    <aside class="cartellino" data-tramonto>
+      <div class="voto"><b>{t["voto"]}</b><span>{t["eccezionale"]}<small>{t["su_booking"]}</small></span></div>
+      <hr>
+      <p class="tramonto" style="margin:0">{t["tramonto"]} <b data-ora>—</b>.<br><span class="mano" style="font-size:22px">{t["tramonto_nota"]}</span></p>
+    </aside>
+  </div>
+</section>
+<div class="corda" aria-hidden="true"></div>
+
+<section class="band" id="casa">
+  <div class="wrap hygge">
+    <div class="foto appare">{img(F['pranzo_c'], t["casa_alt"], "(max-width:820px) 90vw, 45vw")}<span class="nota">{t["nota_caffe"]}</span></div>
+    <div class="appare">
+      <span class="occhiello">{t["occh_hygge"]}</span>
+      <h2>{t["h2_casa"]}</h2>
+      <p class="dizionario"><b>hygge</b> · <i>{t["parola_danese"]}</i><br>{t["diz"]}</p>
+      <p>{t["casa_p"]}</p>
+      <ul class="piccole-cose">{piccole}</ul>
+    </div>
+  </div>
+</section>
+
+<section class="band stanze" id="stanze">
+  <div class="wrap">
+    <span class="occhiello">{t["occh_stanze"]}</span>
+    <h2>{t["h2_stanze"]}</h2>
+    <div class="tabs" role="tablist" aria-label="{t["tabs_label"]}">{tabs}</div>
+    {pannelli}
+    <div class="posti">
+      <div><b>3</b>{t["posti"][0]}</div><div><b>2</b>{t["posti"][1]}</div><div><b>1</b>{t["posti"][2]}</div><div><b>1</b>{t["posti"][3]}</div>
+    </div>
+  </div>
+</section>
+
+<section class="band passeggiata" id="dintorni">
+  <div class="wrap">
+    <div class="intro appare">
+      <div><span class="occhiello">{t["occh_dintorni"]}</span><h2>{t["h2_dintorni"]}</h2></div>
+      <p style="max-width:42ch;margin:0">{t["dintorni_p"]}</p>
+    </div>
+    <div class="percorso appare">{tappe}</div>
+    <div class="in-bici appare">
+      {BICI_SVG.format(aria=html.escape(t["bici_aria"]))}
       <div>
-        <span class="occhiello">pedalando verso il mare</span>
-        <h3>Noleggio biciclette per adulti</h3>
-        <p>Da Ca' Hygge potete muovervi anche in bicicletta: è disponibile il noleggio di bici per adulti, perfetto per arrivare al mare, fare un giro sul lungomare o raggiungere Chiavari senza pensieri di parcheggio.</p>
-        <p class="nota-bici">Chiedetecele quando ci scrivete per la disponibilità.</p>
+        <span class="occhiello">{t["bici_occh"]}</span>
+        <h3>{t["bici_h3"]}</h3>
+        <p>{t["bici_p"]}</p>
+        <p class="nota-bici">{t["bici_nota"]}</p>
       </div>
     </div>
     <div class="gite">{gite}</div>
@@ -231,11 +602,11 @@ def pagina():
 <section class="band voci" id="ospiti">
   <div class="wrap">
     <div class="testa appare">
-      <div><span class="occhiello">dicono di noi</span><h2>Le parole dei nostri ospiti</h2></div>
-      <div class="punteggio"><b>9,5</b><div><strong>Eccezionale</strong><br><span style="color:var(--grigio);font-size:15px">55 recensioni su Booking.com</span></div></div>
+      <div><span class="occhiello">{t["occh_voci"]}</span><h2>{t["h2_voci"]}</h2></div>
+      <div class="punteggio"><b>{t["voto"]}</b><div><strong>{t["eccezionale"]}</strong><br><span style="color:var(--grigio);font-size:15px">{t["recensioni"]}</span></div></div>
     </div>
     <div class="citazioni">{voci}</div>
-    <h3 style="margin-top:64px">Cosa trovate in casa</h3>
+    <h3 style="margin-top:64px">{t["h3_servizi"]}</h3>
     <ul class="servizi">{servizi}</ul>
   </div>
 </section>
@@ -243,11 +614,11 @@ def pagina():
 <section class="band">
   <div class="wrap stampe">
     <div class="appare">
-      <span class="occhiello">un ricordo da portare a casa</span>
+      <span class="occhiello">{t["occh_stampe"]}</span>
       <h2>Visioni di Riviera</h2>
-      <p>Una serie di stampe digitali ispirate ai colori, alla luce e all'atmosfera della Riviera: il porto, il tramonto, le vele, la mappa illustrata di Lavagna. Un frammento autentico di Lavagna da appendere a casa vostra.</p>
-      <p><a class="btn chiaro" href="{mail_stampe}">Chiedi le stampe</a></p>
-      <p style="font-size:14px;color:var(--grigio)">Scrivete a {EMAIL}</p>
+      <p>{t["stampe_p"]}</p>
+      <p><a class="btn chiaro" href="{mail_stampe}">{t["stampe_btn"]}</a></p>
+      <p style="font-size:14px;color:var(--grigio)">{t["scrivete_a"]} {EMAIL}</p>
     </div>
     <div class="quadri appare">{stampe}</div>
   </div>
@@ -256,37 +627,42 @@ def pagina():
 <section class="band prenota" id="prenota">
   {img(F['mansarda'], "", "100vw")}
   <div class="wrap">
-    <span class="mano" style="color:var(--pesca);font-size:34px">vi aspettiamo!</span>
-    <h2>Disponibilità e prenotazioni</h2>
-    <p class="risparmio">Prenotando direttamente da qui trovate sempre le tariffe più convenienti.</p>
-    <p>Per sapere se le vostre date sono libere e per prenotare, scriveteci direttamente: vi rispondiamo noi, senza intermediari.</p>
+    <span class="mano" style="color:var(--pesca);font-size:34px">{t["aspettiamo"]}</span>
+    <h2>{t["h2_prenota"]}</h2>
+    <p class="risparmio">{t["risparmio"]}</p>
+    <p>{t["prenota_p"]}</p>
     <form class="richiesta" id="richiesta" novalidate>
-      <div><label for="arrivo">Arrivo</label><input type="date" id="arrivo" required></div>
-      <div><label for="partenza">Partenza</label><input type="date" id="partenza" required></div>
-      <div><label for="adulti">Adulti</label><select id="adulti">{''.join(f'<option{" selected" if n == 2 else ""}>{n}</option>' for n in range(1, 6))}</select></div>
-      <div><label for="bambini">Bambini</label><select id="bambini">{''.join(f'<option>{n}</option>' for n in range(0, 5))}</select></div>
-      <div class="pieno eta" id="eta" hidden><p class="eta-titolo">Età dei bambini</p><div class="eta-campi"></div></div>
-      <div class="pieno"><label class="spunta"><input type="checkbox" id="cane"> Viaggiamo con un animale</label></div>
-      <div class="pieno"><button class="btn pesca" type="submit">Scrivici per la disponibilità</button>
+      <div><label for="arrivo">{t["arrivo"]}</label><input type="date" id="arrivo" required></div>
+      <div><label for="partenza">{t["partenza"]}</label><input type="date" id="partenza" required></div>
+      <div><label for="adulti">{t["adulti"]}</label><select id="adulti">{''.join(f'<option{" selected" if k == 2 else ""}>{k}</option>' for k in range(1, 6))}</select></div>
+      <div><label for="bambini">{t["bambini"]}</label><select id="bambini">{''.join(f'<option>{k}</option>' for k in range(0, 5))}</select></div>
+      <div class="pieno eta" id="eta" hidden><p class="eta-titolo">{t["eta_titolo"]}</p><div class="eta-campi"></div></div>
+      <div class="pieno"><label class="spunta"><input type="checkbox" id="cane"> {t["cane"]}</label></div>
+      <div class="pieno"><button class="btn pesca" type="submit">{t["invia"]}</button>
       <p class="avviso" aria-live="polite"></p></div>
     </form>
-    <p class="o-scrivi">Oppure scriveteci a <a href="mailto:{EMAIL}">{EMAIL}</a></p>
+    <p class="o-scrivi">{t["oppure"]} <a href="mailto:{EMAIL}">{EMAIL}</a></p>
   </div>
 </section>
 </main>
 
 <footer class="piede">
   <div class="wrap">
-    <a class="logo" href="#"><img src="{url(LOGO, 128)}" alt="" width="52" height="52"><b>CA' HYGGE</b></a>
-    <span>Appartamento vacanze a Lavagna (GE)</span>
+    <a class="logo" href="{su}{percorso(lang)}"><img src="{url(LOGO, 128)}" alt="" width="52" height="52"><b>CA' HYGGE</b></a>
+    <span>{t["piede"]}</span>
     <span><a href="mailto:{EMAIL}">{EMAIL}</a></span>
   </div>
 </footer>
-<script src="js/sole.js"></script>
-<script src="js/casa.js?v=13"></script>
+<script>window.CA_T={js_t};</script>
+<script src="{su}js/sole.js"></script>
+<script src="{su}js/casa.js?v=14"></script>
 </body>
 </html>
 '''
 
-open(os.path.join(OUT, "index.html"), "w", encoding="utf-8").write(pagina())
+
+for l in LINGUE:
+    cartella = os.path.join(OUT, percorso(l))
+    os.makedirs(cartella, exist_ok=True)
+    open(os.path.join(cartella, "index.html"), "w", encoding="utf-8").write(pagina(l))
 print("ok")

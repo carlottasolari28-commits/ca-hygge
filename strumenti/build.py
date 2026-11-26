@@ -70,7 +70,7 @@ STANZE = [
 
 TAPPE = [("Ca' Hygge", "0'", "si parte da qui"), ("Fermata bus", "1'", "proprio sotto casa"),
          ("Supermercato", "3'", "per la spesa"), ("Centro di Lavagna", "10'", "a piedi"),
-         ("Centro di Chiavari", "10'", "a piedi"), ("Stazione", "15'", "a piedi")]
+         ("Centro di Chiavari", "10'", "a piedi"), ("Mare", "15'", "a piedi"), ("Stazione", "15'", "a piedi")]
 
 GITE = [("Sestri Levante", "La Baia del Silenzio e la Baia delle Favole, a pochi minuti."),
         ("Cinque Terre", "Monterosso, Vernazza, Manarola: tutte in treno, senza pensieri di parcheggio."),
@@ -125,7 +125,7 @@ def pagina():
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://static.wixstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Karla:wght@400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/stile.css?v=9">
+<link rel="stylesheet" href="css/stile.css?v=10">
 <script type="application/ld+json">{{"@context":"https://schema.org","@type":"VacationRental","name":"Ca' Hygge","description":"Appartamento vacanze a Lavagna, a pochi passi dal mare.","image":"{url(F['soggiorno'], 1600)}","address":{{"@type":"PostalAddress","addressLocality":"Lavagna","addressRegion":"GE","addressCountry":"IT"}},"email":"{EMAIL}"}}</script>
 </head>
 <body>
@@ -256,7 +256,7 @@ def pagina():
   </div>
 </footer>
 <script src="js/sole.js"></script>
-<script src="js/casa.js?v=9"></script>
+<script src="js/casa.js?v=10"></script>
 </body>
 </html>
 '''

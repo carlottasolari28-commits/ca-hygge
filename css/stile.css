@@ -222,3 +222,4 @@ p{margin:0 0 1em}
 .richiesta .eta-campi{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
 .richiesta .eta-campi label{font-weight:500;color:var(--grigio)}
 @media(max-width:600px){.richiesta .eta-campi{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.percorso{grid-template-columns:repeat(7,minmax(0,1fr))}@media(max-width:760px){.percorso{grid-template-columns:minmax(0,1fr)}}

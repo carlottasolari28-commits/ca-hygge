@@ -125,7 +125,7 @@ def pagina():
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://static.wixstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Karla:wght@400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/stile.css?v=8">
+<link rel="stylesheet" href="css/stile.css?v=9">
 <script type="application/ld+json">{{"@context":"https://schema.org","@type":"VacationRental","name":"Ca' Hygge","description":"Appartamento vacanze a Lavagna, a pochi passi dal mare.","image":"{url(F['soggiorno'], 1600)}","address":{{"@type":"PostalAddress","addressLocality":"Lavagna","addressRegion":"GE","addressCountry":"IT"}},"email":"{EMAIL}"}}</script>
 </head>
 <body>
@@ -236,8 +236,9 @@ def pagina():
     <form class="richiesta" id="richiesta" novalidate>
       <div><label for="arrivo">Arrivo</label><input type="date" id="arrivo" required></div>
       <div><label for="partenza">Partenza</label><input type="date" id="partenza" required></div>
-      <div><label for="adulti">Adulti</label><select id="adulti">{''.join(f'<option{" selected" if n == 2 else ""}>{n}</option>' for n in range(1, 8))}</select></div>
-      <div><label for="bambini">Bambini</label><select id="bambini">{''.join(f'<option>{n}</option>' for n in range(0, 6))}</select></div>
+      <div><label for="adulti">Adulti</label><select id="adulti">{''.join(f'<option{" selected" if n == 2 else ""}>{n}</option>' for n in range(1, 6))}</select></div>
+      <div><label for="bambini">Bambini</label><select id="bambini">{''.join(f'<option>{n}</option>' for n in range(0, 5))}</select></div>
+      <div class="pieno eta" id="eta" hidden><p class="eta-titolo">Età dei bambini</p><div class="eta-campi"></div></div>
       <div class="pieno"><label class="spunta"><input type="checkbox" id="cane"> Viaggiamo con un animale</label></div>
       <div class="pieno"><button class="btn pesca" type="submit">Scrivici per la disponibilità</button>
       <p class="avviso" aria-live="polite"></p></div>
@@ -255,7 +256,7 @@ def pagina():
   </div>
 </footer>
 <script src="js/sole.js"></script>
-<script src="js/casa.js?v=8"></script>
+<script src="js/casa.js?v=9"></script>
 </body>
 </html>
 '''

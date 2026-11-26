@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://static.wixstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Karla:wght@400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/stile.css?v=8">
+<link rel="stylesheet" href="css/stile.css?v=9">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"VacationRental","name":"Ca' Hygge","description":"Appartamento vacanze a Lavagna, a pochi passi dal mare.","image":"https://static.wixstatic.com/media/edddbc_9b73cc7bd9f04071ac35682df0bffee0~mv2.jpg/v1/fit/w_1600,h_1600,q_85/cahygge.jpg","address":{"@type":"PostalAddress","addressLocality":"Lavagna","addressRegion":"GE","addressCountry":"IT"},"email":"cahygge@gmail.com"}</script>
 </head>
 <body>
@@ -150,8 +150,9 @@
     <form class="richiesta" id="richiesta" novalidate>
       <div><label for="arrivo">Arrivo</label><input type="date" id="arrivo" required></div>
       <div><label for="partenza">Partenza</label><input type="date" id="partenza" required></div>
-      <div><label for="adulti">Adulti</label><select id="adulti"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option></select></div>
-      <div><label for="bambini">Bambini</label><select id="bambini"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+      <div><label for="adulti">Adulti</label><select id="adulti"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option></select></div>
+      <div><label for="bambini">Bambini</label><select id="bambini"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option></select></div>
+      <div class="pieno eta" id="eta" hidden><p class="eta-titolo">Età dei bambini</p><div class="eta-campi"></div></div>
       <div class="pieno"><label class="spunta"><input type="checkbox" id="cane"> Viaggiamo con un animale</label></div>
       <div class="pieno"><button class="btn pesca" type="submit">Scrivici per la disponibilità</button>
       <p class="avviso" aria-live="polite"></p></div>
@@ -169,6 +170,6 @@
   </div>
 </footer>
 <script src="js/sole.js"></script>
-<script src="js/casa.js?v=8"></script>
+<script src="js/casa.js?v=9"></script>
 </body>
 </html>

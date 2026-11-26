@@ -61,14 +61,27 @@
     arrivo.min = oggi; partenza.min = oggi;
     arrivo.addEventListener('change', () => { partenza.min = arrivo.value || oggi; });
     const it = v => v.split('-').reverse().join('/');
+    const selB = f.querySelector('#bambini'), boxEta = f.querySelector('#eta'), campi = f.querySelector('.eta-campi');
+    const opzioni = '<option value="">Scegli</option><option value="meno di 1 anno">meno di 1 anno</option>' +
+      Array.from({ length: 17 }, (_, i) => '<option value="' + (i + 1) + (i ? ' anni' : ' anno') + '">' + (i + 1) + (i ? ' anni' : ' anno') + '</option>').join('');
+    const aggiornaEta = () => {
+      const n = Number(selB.value), vecchi = [...campi.querySelectorAll('select')].map(x => x.value);
+      campi.innerHTML = Array.from({ length: n }, (_, i) =>
+        '<div><label for="eta-' + i + '">Bambino ' + (i + 1) + '</label><select id="eta-' + i + '">' + opzioni + '</select></div>').join('');
+      campi.querySelectorAll('select').forEach((x, i) => { if (vecchi[i]) x.value = vecchi[i]; });
+      boxEta.hidden = n === 0;
+    };
+    selB.addEventListener('change', aggiornaEta);
     f.addEventListener('submit', ev => {
       ev.preventDefault();
       if (!arrivo.value || !partenza.value) { avviso.textContent = 'Indicate le date di arrivo e di partenza.'; return; }
       if (partenza.value <= arrivo.value) { avviso.textContent = 'La partenza deve essere dopo l’arrivo.'; return; }
+      const eta = [...campi.querySelectorAll('select')].map(x => x.value);
+      if (eta.some(v => !v)) { avviso.textContent = 'Indicate l\u2019età di ogni bambino.'; return; }
       const notti = Math.round((new Date(partenza.value) - new Date(arrivo.value)) / 864e5);
       const corpo = 'Ciao! Vorremmo sapere se Ca’ Hygge è disponibile:\n\n' +
         'Arrivo: ' + it(arrivo.value) + '\nPartenza: ' + it(partenza.value) + ' (' + notti + (notti === 1 ? ' notte' : ' notti') + ')\n' +
-        'Adulti: ' + f.querySelector('#adulti').value + '\nBambini: ' + f.querySelector('#bambini').value + '\n' +
+        'Adulti: ' + f.querySelector('#adulti').value + '\nBambini: ' + selB.value + (eta.length ? ' (età: ' + eta.join(', ') + ')' : '') + '\n' +
         (f.querySelector('#cane').checked ? 'Viaggiamo con un animale.\n' : '') + '\nGrazie!';
       const oggetto = 'Disponibilità Ca’ Hygge dal ' + it(arrivo.value) + ' al ' + it(partenza.value);
       location.href = 'mailto:cahygge@gmail.com?subject=' + encodeURIComponent(oggetto) + '&body=' + encodeURIComponent(corpo);

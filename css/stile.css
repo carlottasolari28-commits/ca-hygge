@@ -217,3 +217,8 @@ p{margin:0 0 1em}
 .vantaggio,.prenota .risparmio{display:block;background:none;padding:0;border-radius:0;color:#fff;font-weight:600;text-shadow:0 1px 10px rgba(0,0,0,.35)}
 .vantaggio{font-size:17px;margin:-8px 0 24px!important;max-width:40ch}
 .prenota .risparmio{font-size:19px;margin:0 auto 10px}
+.richiesta .eta{text-align:left}
+.richiesta .eta-titolo{margin:0 0 8px;font-size:14px;font-weight:600;color:var(--blu)}
+.richiesta .eta-campi{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.richiesta .eta-campi label{font-weight:500;color:var(--grigio)}
+@media(max-width:600px){.richiesta .eta-campi{grid-template-columns:repeat(2,minmax(0,1fr))}}

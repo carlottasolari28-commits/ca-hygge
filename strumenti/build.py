@@ -31,6 +31,8 @@ STAMPE = ["96453811213c4c339860fdc627a31bcb.png", "08d2715b3a934c88a73bb23b8b44f
           "fbb45c9a8ed44872a9a31055bca9c958.png", "4211c9fc650b44938e92d3f520bab17c"]
 
 ICONE = {
+    "fumo": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><circle cx="12" cy="7.5" r="1"/><path d="M8 14c1 1 1 2 0 3s-1 2 0 3M12 14c1 1 1 2 0 3s-1 2 0 3M16 14c1 1 1 2 0 3s-1 2 0 3"/></svg>',
+    "co": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M11 10.5a2 2 0 1 0 0 3M15 10a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"/><path d="M8 17h.01"/></svg>',
     "lavatrice": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M4 7h16M7 5h.01M10 5h.01"/><circle cx="12" cy="14" r="4"/></svg>',
     "bollitore": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 8h9l1 12H6zM16 10h2a2 2 0 0 1 0 4h-1.5M9 8V6a3 3 0 0 1 6 0v2M5 20h14"/></svg>',
     "microonde": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="13" rx="2"/><rect x="6" y="8" width="9" height="7" rx="1"/><path d="M18 9h.01M18 12h.01M18 15h.01"/></svg>',
@@ -66,7 +68,7 @@ FOTO_STANZE = [
     ("bagno", ["bagno", "cortesia"], ["saponi", "lenzuola"]),
 ]
 ICONE_SERVIZI = ["auto", "wifi", "tv", "lavatrice", "microonde", "bollitore", "caffe", "zampa", "balcone",
-                 "lenzuola", "giochi", "bici", "treno"]
+                 "lenzuola", "giochi", "bici", "treno", "fumo", "co"]
 ICONE_PICCOLE = ["foglio", "pianta", "giochi", "zampa"]
 
 T = {}
@@ -125,7 +127,7 @@ T["it"] = dict(
     voce_cap="Ospite su Booking.com",
     h3_servizi="Cosa offriamo",
     servizi=["Parcheggi pubblici vicinissimi", "WiFi gratuito", "Netflix e Prime Video", "Lavatrice", "Microonde", "Bollitore",
-             "Macchina da caffè", "Animali ammessi", "Balcone", "Lenzuola e asciugamani", "Giochi da tavolo", "Noleggio bici per adulti", "Stazione a 15 minuti"],
+             "Macchina da caffè", "Animali ammessi", "Balcone", "Lenzuola e asciugamani", "Giochi da tavolo", "Noleggio bici per adulti", "Stazione a 15 minuti", "Rilevatore di fumo", "Rilevatore di monossido di carbonio"],
     occh_stampe="un ricordo da portare a casa",
     stampe_p="Una serie di stampe digitali ispirate ai colori, alla luce e all'atmosfera della Riviera: il porto, il tramonto, le vele, la mappa illustrata di Lavagna. Un frammento autentico di Lavagna da appendere a casa vostra.",
     stampe_btn="Chiedi le stampe", scrivete_a="Scrivete a", stampe_alt="Stampa illustrata di Lavagna, collezione Visioni di Riviera",
@@ -198,7 +200,7 @@ T["en"] = dict(
     voce_cap="Guest on Booking.com · translated from Italian",
     h3_servizi="What we offer",
     servizi=["Public parking right nearby", "Free WiFi", "Netflix and Prime Video", "Washing machine", "Microwave", "Kettle",
-             "Coffee machine", "Pets allowed", "Balcony", "Bed linen and towels", "Board games", "Bike hire for adults", "Station 15 minutes away"],
+             "Coffee machine", "Pets allowed", "Balcony", "Bed linen and towels", "Board games", "Bike hire for adults", "Station 15 minutes away", "Smoke detector", "Carbon monoxide detector"],
     occh_stampe="a souvenir to take home",
     stampe_p="A series of digital prints inspired by the colours, light and atmosphere of the Riviera: the harbour, the sunset, the sails, the illustrated map of Lavagna. An authentic piece of Lavagna to hang at home.",
     stampe_btn="Ask about the prints", scrivete_a="Write to", stampe_alt="Illustrated print of Lavagna, Visioni di Riviera collection",
@@ -271,7 +273,7 @@ T["de"] = dict(
     voce_cap="Gast auf Booking.com · aus dem Italienischen übersetzt",
     h3_servizi="Was wir bieten",
     servizi=["Öffentliche Parkplätze ganz in der Nähe", "Kostenloses WLAN", "Netflix und Prime Video", "Waschmaschine", "Mikrowelle", "Wasserkocher",
-             "Kaffeemaschine", "Haustiere erlaubt", "Balkon", "Bettwäsche und Handtücher", "Brettspiele", "Fahrradverleih für Erwachsene", "Bahnhof in 15 Minuten"],
+             "Kaffeemaschine", "Haustiere erlaubt", "Balkon", "Bettwäsche und Handtücher", "Brettspiele", "Fahrradverleih für Erwachsene", "Bahnhof in 15 Minuten", "Rauchmelder", "Kohlenmonoxidmelder"],
     occh_stampe="eine Erinnerung für Zuhause",
     stampe_p="Eine Serie digitaler Drucke, inspiriert von Farben, Licht und Stimmung der Riviera: der Hafen, der Sonnenuntergang, die Segel, die illustrierte Karte von Lavagna. Ein echtes Stück Lavagna für Ihre Wand.",
     stampe_btn="Drucke anfragen", scrivete_a="Schreiben Sie an", stampe_alt="Illustrierter Druck von Lavagna, Kollektion Visioni di Riviera",
@@ -344,7 +346,7 @@ T["fr"] = dict(
     voce_cap="Hôte sur Booking.com · traduit de l'italien",
     h3_servizi="Ce que nous offrons",
     servizi=["Parkings publics tout près", "WiFi gratuit", "Netflix et Prime Video", "Lave-linge", "Micro-ondes", "Bouilloire",
-             "Machine à café", "Animaux acceptés", "Balcon", "Draps et serviettes", "Jeux de société", "Location de vélos pour adultes", "Gare à 15 minutes"],
+             "Machine à café", "Animaux acceptés", "Balcon", "Draps et serviettes", "Jeux de société", "Location de vélos pour adultes", "Gare à 15 minutes", "Détecteur de fumée", "Détecteur de monoxyde de carbone"],
     occh_stampe="un souvenir à rapporter",
     stampe_p="Une série d'impressions numériques inspirées des couleurs, de la lumière et de l'atmosphère de la Riviera : le port, le coucher de soleil, les voiles, la carte illustrée de Lavagna. Un fragment authentique de Lavagna à accrocher chez vous.",
     stampe_btn="Demander les impressions", scrivete_a="Écrivez à", stampe_alt="Impression illustrée de Lavagna, collection Visioni di Riviera",
@@ -417,7 +419,7 @@ T["es"] = dict(
     voce_cap="Huésped en Booking.com · traducido del italiano",
     h3_servizi="Qué ofrecemos",
     servizi=["Aparcamientos públicos muy cerca", "WiFi gratis", "Netflix y Prime Video", "Lavadora", "Microondas", "Hervidor",
-             "Cafetera", "Se admiten mascotas", "Balcón", "Ropa de cama y toallas", "Juegos de mesa", "Alquiler de bicis para adultos", "Estación a 15 minutos"],
+             "Cafetera", "Se admiten mascotas", "Balcón", "Ropa de cama y toallas", "Juegos de mesa", "Alquiler de bicis para adultos", "Estación a 15 minutos", "Detector de humo", "Detector de monóxido de carbono"],
     occh_stampe="un recuerdo para llevar a casa",
     stampe_p="Una serie de láminas digitales inspiradas en los colores, la luz y el ambiente de la Riviera: el puerto, el atardecer, las velas, el mapa ilustrado de Lavagna. Un pedacito auténtico de Lavagna para colgar en casa.",
     stampe_btn="Pedir las láminas", scrivete_a="Escribid a", stampe_alt="Lámina ilustrada de Lavagna, colección Visioni di Riviera",

@@ -75,7 +75,7 @@ TAPPE = [("Ca' Hygge", "0'", "si parte da qui"), ("Fermata bus", "1'", "proprio 
 
 GITE = [("Sestri Levante", "La Baia del Silenzio e la Baia delle Favole, a pochi minuti."),
         ("Cinque Terre", "Monterosso, Vernazza, Manarola: tutte in treno, senza pensieri di parcheggio."),
-        ("Camogli", "Le case colorate sul porticciolo e la focaccia al formaggio."),
+        ("Camogli", "Le case colorate affacciate sul porticciolo."),
         ("Portofino", "In treno fino a Santa Margherita, poi bus o battello.")]
 
 VOCI = [("Casa curata nei particolari… Fornita di tutto ciò che può servire in ogni stanza.", ),
